@@ -1,0 +1,47 @@
+data design document- was going to make this two tables, one for students and the other for quantities of fruit.
+then I though, nah, that's ridiculous. why make two when one will suffice? they were going to have a 1:1 relationship
+anyway, so yeah just decided to go with one.
+
+table 1: students_fruit
+ID        fname   lname  "naval_orang_full"  "naval_orang_half"   "red_grape_full" ETC
+PK, AI
+INT(10)   text    text     INT(3)        *           *
+
+
+CREATE TABLE students_fruit_2014 (
+  ID INT(10) NOT NULL AUTO_INCREMENT,
+  fname VARCHAR(15) NOT NULL,
+  lname VARCHAR(25) NOT NULL,
+  naval_orang_full INT(3),
+  naval_orang_half INT(3),
+  red_grape_full INT(3),
+  red_grape_half INT(3),
+  grann_smith_full INT(3),
+  grann_smith_half INT(3),
+  red_delic_full INT(3),
+  red_delic_half INT(3),
+  golde_delic_full INT(3),
+  golde_delic_half INT(3),
+  braeb_full INT(3),
+  braeb_half INT(3),
+  danjo_pears_full INT(3),
+  danjo_pears_half INT(3),
+  mixed_a INT(3),
+  mixed_b INT(3),
+  mixed_c INT(3),
+  mixed_d INT(3),
+  gift_l INT(3),
+  gift_s INT(3),
+  gift_lp INT(3),
+  gitf_sp INT(3),
+  pinea INT(3),
+  PRIMARY KEY ( ID )
+);
+
+
+
+db connection info
+db - hackfinder
+usr - root
+pass -
+server - localhost

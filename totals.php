@@ -1,4 +1,16 @@
-<!DOCTYPE html>
+<?php
+//db connection variables
+  require_once 'db_config.php';
+  //connecting to db
+  $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE, DB_PORT);
+  //check db connection
+  if ($mysqli->connect_errno) {
+      echo "Connection Failed: " . $mysqli->connect_error;
+      die();
+  }
+
+?>
+<!doctype html>
 <html lang="en">
 <head>
 <title>OPMC Fruit Sale App</title>

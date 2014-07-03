@@ -1,0 +1,4 @@
+/* style up the fruit sale counting app */
+input[type="number"] {
+  width: 5%;
+}

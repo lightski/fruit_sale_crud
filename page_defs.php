@@ -6,12 +6,12 @@
 
 $head =  '<meta charset="utf-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0">
-	  <link rel="stylesheet" href="portfolio_style.css"  media="only screen" >
+	  <link rel="stylesheet" href="fruit_style.css"  media="only screen" >
 	  ';
 
 
 $footer = " <footer>
-		<p>Oostburg Schools Fruit sale Counting WebApp<br>
+		<p>Oostburg Parents Music Club Fruit Sale Counting WebApp<br>
        by Dan Leitzke 2014 - " . date("Y") . " drleitzke[at]gmail[dot]com<br>
 		</p>
 	   	</footer>

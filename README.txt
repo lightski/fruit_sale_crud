@@ -8,13 +8,13 @@ written in PHP with love, this app is designed to aid the counting of fruit sale
 author: dan leitzke 06/30/2014
 
 @TODO
-  -complete fruit order array with full item names
-  -build nice form in index.php
-  -create database and table structure
-  -use process.php to update database
+  -use process.php to update database via prepared statements
   -build some report functionality in totals.php
   -style the whole thing to look reasonable
   -deploy to server, protect with username/password
   -???
   -PROFIT!
 
+FUTURE ADD-ONS
+  -user switchable years, which creates new table in database
+    (and switches to that for inserts and queries)

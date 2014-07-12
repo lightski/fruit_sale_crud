@@ -16,5 +16,7 @@ author: dan leitzke 06/30/2014
   -PROFIT!
 
 FUTURE ADD-ONS
-  -user switchable years, which creates new table in database
-    (and switches to that for inserts and queries)
+	-Proper data validation in process.php - only characters in fname/lname and only numbers in fruit
+	-user switchable years, which creates new table in database
+	(and switches to that for inserts and queries)
+

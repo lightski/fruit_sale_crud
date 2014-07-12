@@ -2,3 +2,6 @@
 input[type="number"] {
   width: 5%;
 }
+a#activePage {
+	color: red;
+}

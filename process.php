@@ -14,32 +14,9 @@ function redirect_to($location) {
 	die();
 }
 
-// verification functions
+// verification function
 function has_presence($value) {
 	return isset($value) && $value !== "";
-}
-function check_input($tainted_input) {
-	$pattern = '“”/^[\w\s.,!?&|]*$/-';
-	if(preg_match($pattern, $tainted_input) != 0) {
-		return $tainted_input;
-	} else {
-		return FALSE;
-	}
-}
-
-// bind class for binding a dynamic number of parameters
-// from nick9v here->http://www.php.net/manual/en/mysqli-stmt.ind-param.php
-class BindParam	{
-    private $values = array(), $types = '';
-
-    public function add( $type, &$value ){
-        $this->values[] = $value;
-        $this->types .= $type;
-    }
-
-    public function get(){
-        return array_merge(array($this->types), $this->values);
-    }
 }
 
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -60,19 +37,20 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
   print_r($_POST);
   echo "</pre>";
 
-  $bind_param = new BindParam();
-  $q_array = array();
+  $query = "INSERT INTO students_fruit_2014 SET ";
+  $val_arr = array();
+
   foreach ($_POST as $DIRTY_column => $DIRTY_data) {
 	// first check the values.
-	  if (has_presence($DIRTY_column) && check_input($DIRTY_column)) {
-		  // you're clean
+	  if (has_presence($DIRTY_column)) {
+		  // ADD VALIDATION CHECK ABOVE
 		  $column = $DIRTY_column;
 	  } else {
 		 // client passed bad data or didn't fill this
 		 $column = 0;
 	  }
-	  if (has_presence($DIRTY_data) && check_input($DIRTY_data)) {
-		  // you're clean
+	  if (has_presence($DIRTY_data)) {
+		  // ADD VALIDATION CHECK ABOVE
 		  $data = $DIRTY_data;
 	  } else {
 		 // client passed bad data or didn't fill this
@@ -80,24 +58,28 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
 	  }
 
     // add value to array. key is column name, value is data.
-	  // build prepared statement, from http://www.php.net/manual/en/mysqli-stmt.bind-param.php
-// HERE FIX THIS NEXT!!!!!!!!!!!!!!!!!!!
-	  if ($column !== 0 ) {
-		  $q_array[] = "$column = ?";
-		  if ($column == "fname" || $column === "lname") {
-			$bind_param->add('s', $data);
-		  } else {
-			$bind_param->add('i', $data);
-		  }
-	  } 
+	  if ($column !== 0 && $data !== 0) {
+		  $query .= "$column=?,";
+		  $val_arr[] = $data;
+	  }
   } // end for
-  // query like this:
-  // INSERT INTO students_fruit_2014 VALUES (?, ?, ?)
+  // remove trailing comma
+  $query = substr($query, 0, -1);
+	
+  //testing purposes
+  echo $query;
   echo "<br><pre>";
-  print_r($q_array);
-  print_r($bind_param->get());
+  print_r($val_arr);
   echo "</pre>";
 
+  // big crazy database thing w/prepared statements
+  // mostly from comment section here: http://www.php.net/manual/en/mysqli-stmt.bind-param.php
+  $res = $mysqli->prepare($query);
+  $ref = new ReflectionClass('mysqli_stmt');
+  $method = $ref->getMethod("bind_param");
+  $method->invokeArgs($res,$val_arr);
+  $res->execute();
+ 
 
 } else {
 	//page was not requested by sending the form. go back!

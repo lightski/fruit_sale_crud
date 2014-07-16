@@ -8,7 +8,6 @@ written in PHP with love, this app is designed to aid the counting of fruit sale
 author: dan leitzke 06/30/2014
 
 @TODO
-  -use process.php to update database via prepared statements, fix the broken bit near the bottom
   -build some report functionality in totals.php
   -style the whole thing to look reasonable
   -deploy to server, protect with username/password
@@ -17,6 +16,7 @@ author: dan leitzke 06/30/2014
 
 FUTURE ADD-ONS
 	-Proper data validation in process.php - only characters in fname/lname and only numbers in fruit
-	-user switchable years, which creates new table in database
-	(and switches to that for inserts and queries)
+	-User switchable years, which creates new table in database
+	(and switches to that for inserts and queries) must show up in totals.php as well
+	-Success message and failure message for data entry
 

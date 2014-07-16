@@ -28,17 +28,26 @@
    *  repurposed from portfolio site. because reasons....
    */
 
-$head =  '<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width; initial-scale=1.0">
-	  <link rel="stylesheet" href="fruit_style.css"  media="only screen" >
-	  ';
+function pageHead($pageTitle) {
+    return "<!doctype html>
+<html lang=\"en\">
+<head>
+	<meta charset=\"utf-8\">
+	<title>$pageTitle</title>
+	<meta name=\"viewport\" content=\"width=device-width; initial-scale=1.0\">
+	<link rel=\"stylesheet\" href=\"fruit_style.css\"  media=\"only screen\" >
+</head>
+<body>
+";
+}
 
-
-$footer = " <footer>
-		<p>Oostburg Parents Music Club Fruit Sale Counting WebApp<br>
-       by Dan Leitzke 2014 - " . date("Y") . " drleitzke[at]gmail[dot]com<br>
-		</p>
-	   	</footer>
+$footer = "<footer>
+	<p>Oostburg Parents Music Club Fruit Sale Counting WebApp<br>
+   by Dan Leitzke 2014 - " . date("Y") . " drleitzke[at]gmail[dot]com<br>
+	</p>
+</footer>
+</body>
+</html>
       ";
 
 function getHeaderNav($currPage) {
@@ -48,10 +57,11 @@ function getHeaderNav($currPage) {
 
   //start the header
   $headerNav = "<header>
-	            <h1>OPMC Fruit Sale Counting App</h1>
-        </header>
-	      <nav>
- 		    <ul>\n";
+		<h1>OPMC Fruit Sale Counting App</h1>
+</header>
+<nav>
+  <ul>
+	  ";
 
   //one variable for each nav item
   $indexLink = "<li><a href='index.php'>Order Entry</a></li>\n";
@@ -65,8 +75,8 @@ function getHeaderNav($currPage) {
   $headerNav .= $indexLink . $totalsLink;
 
   //close ending tags
-  $headerNav .= "	</ul>
- 	                  </nav>";
+  $headerNav .= "</ul>
+			  </nav>";
 
   return $headerNav;
 }

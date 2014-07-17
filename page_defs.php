@@ -4,25 +4,52 @@
    * first define the array of all fruit items
    * key = mysql table name, value = full name for frontend label purposes
    */
-  $fruit_items = array("naval_orang_full" =>"Naval Oranges Full Box",
-                       "naval_orang_half" => "Naval Oranges Half Box",
-                       "red_grape_full" => "Red Grapefruit Full Box",
-                       "red_grape_half" => "Red Grapefruit Half Box",
-                       "grann_smith_full" => "Granny Smith Full Box",
-                       "grann_smith_half" => "Granny Smith Half Box",
-                       "red_delic_full" => "Red Delicious Full Box",
-                       "red_delic_half" => "Red Delicious Half Box",
-                       "golde_delic_full" => "Golden Delicious Full Box",
-                       "golde_delic_half" => "Golden Delicious Half Box",
-                       "braeb_full" => "Braeburn Full Box",
-                       "braeb_half" => "Braeburn Half Box",
-                       "danjo_pears_full" => "D'Anjou Full Box",
-                       "danjo_pears_half" => "D'Anjou Half Box",
-                       "mixed_a" => "Mixed Box A", "mixed_b" => "Mixed Box B",
-                       "mixed_c" => "Mixed Box C", "mixed_d" => "Mixed Box D",
-                       "gift_l1" => "Gift Box L", "gift_s" => "Gift Box S",
-                       "gift_lp" => "Gift Box LP", "gitf_sp" => "Gift Box SP",
-                       "pinea" => "Pineapple");
+$fruit_items = array("naval_orang_full" => array("name" => "Naval Oranges Full Box",
+												 "amount" => 0),
+	 				 "naval_orang_half" => array("name" => "Naval Oranges Half Box",
+												 "amount" => 0),
+					 "red_grape_full" => array("name" => "Red Grapefruit Full Box",
+											   "amount" => 0),
+					 "red_grape_half" => array("name" => "Red Grapefruit Half Box",
+											   "amount" => 0),
+					 "grann_smith_full" => array("name" => "Granny Smith Full Box",
+												 "amount" => 0),
+					 "grann_smith_half" => array("name" => "Granny Smith Half Box",
+												 "amount" => 0),
+					 "red_delic_full" => array("name" => "Red Delicious Full Box",
+											   "amount" => 0),
+					 "red_delic_half" => array("name" => "Red Delicious Half Box",
+											   "amount" => 0),
+				     "golde_delic_full" => array("name" => "Golden Delicious Full Box",
+												 "amount" => 0),
+					 "golde_delic_half" => array("name" => "Golden Delicious Half Box",
+												 "amount" => 0),
+				     "braeb_full" => array("name" => "Braeburn Full Box",
+										   "amount" => 0),
+				     "braeb_half" => array("name" => "Braeburn Half Box",
+										   "amount" => 0),
+				     "danjo_pears_full" => array("name" => "D'Anjou Full Box",
+												 "amount" => 0),
+				     "danjo_pears_half" => array("name" => "D'Anjou Half Box",
+												 "amount" => 0),
+					 "mixed_a" => array("name" => "Mixed Box A", 
+										"amount" => 0),
+				     "mixed_b" => array("name" => "Mixed Box B",
+										"amount" => 0),
+					 "mixed_c" => array("name" => "Mixed Box C", 
+										"amount" => 0),
+					 "mixed_d" => array("name" => "Mixed Box D",
+										"amount" => 0),
+				     "gift_l" => array("name" => "Gift Box L", 
+										"amount" => 0),
+				     "gift_s" => array("name" => "Gift Box S",
+									   "amount" => 0),
+					 "gift_lp" => array("name" => "Gift Box LP",
+									    "amount" => 0),
+				     "gitf_sp" => array("name" => "Gift Box SP",
+										"amount" => 0),
+					 "pinea" => array("name" => "Pineapple",
+									  "amount" => 0));
   /*
    * Page definition variables. Used to build consistent site head, header/navigation, and footer.
    *  repurposed from portfolio site. because reasons....
@@ -66,13 +93,14 @@ function getHeaderNav($currPage) {
   //one variable for each nav item
   $indexLink = "<li><a href='index.php'>Order Entry</a></li>\n";
   $totalsLink = "<li><a href='totals.php'>Totals</a></li>\n";
+  $studentsLink = "<li><a href='students_report.php'>Students Report</a></li>\n";
 
   //figure out which page is active and add a class to it
   $pageVar = $currPage . "Link";
   $$pageVar = "<li><a id='activePage' " . substr($$pageVar, 7);
 
   //concatenate strings to add nav items
-  $headerNav .= $indexLink . $totalsLink;
+  $headerNav .= $indexLink . $totalsLink . $studentsLink;
 
   //close ending tags
   $headerNav .= "</ul>

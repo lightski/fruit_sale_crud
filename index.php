@@ -12,9 +12,9 @@ $orderForm = "<h2>This is the form to enter stuff:</h2>
 
 $counter = 1;
 // $fruit_items is from page_defs.php
-foreach ($fruit_items as $shortname => $fullname) {
+foreach ($fruit_items as $shortname => $attrib_array) {
 	// create an input for each type of fruit.
-	$orderForm .= "<label>$fullname</label> <input type=\"number\" name=\"$shortname\" placeholder=\"0\" min=\"0\" max=\"999\">";
+	$orderForm .= "<label>".$attrib_array["name"]."</label> <input type=\"number\" name=\"$shortname\" placeholder=\"0\" min=\"0\" max=\"999\">";
     if ($counter % 4 == 0) {
 		$orderForm .= "<br><br>";
     }
@@ -26,7 +26,7 @@ $orderForm .= "<br>
 </form>";
 
 // output the page
-echo pageHead("OPMC Fruit Sale App");
+echo pageHead("OPMC Fruit Sale App - Order Entry");
 echo getHeaderNav("index"); 
 echo $orderForm;
 echo $footer;

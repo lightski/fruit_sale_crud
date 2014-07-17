@@ -14,6 +14,7 @@ author: dan leitzke 06/30/2014
 		-see if tables need resizing
 		-line up columns on index.php, it's driving me mad
 	-remove db_config from git repo, add .gitignore, make a template instead
+	-organize files into a couple folders?
 		
 	-deploy to server, protect with username/password
 	-???

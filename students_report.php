@@ -54,8 +54,8 @@ $results->close();
 $mysqli->close();
 
 // build the page
-echo pageHead("OPMC Fruit Sale App - Students Report");
-echo getHeaderNav("students_report"); 
+echo page_head("OPMC Fruit Sale App - Students Report");
+echo get_header_nav("students_report"); 
 echo $page_data;
 echo $footer;
 

@@ -55,12 +55,12 @@ $fruit_items = array("naval_orang_full" => array("name" => "Naval Oranges Full B
    *  repurposed from portfolio site. because reasons....
    */
 
-function pageHead($pageTitle) {
+function page_head($page_title) {
     return "<!doctype html>
 <html lang=\"en\">
 <head>
 	<meta charset=\"utf-8\">
-	<title>$pageTitle</title>
+	<title>$page_title</title>
 	<meta name=\"viewport\" content=\"width=device-width; initial-scale=1.0\">
 	<link rel=\"stylesheet\" href=\"fruit_style.css\"  media=\"only screen\" >
 </head>
@@ -77,13 +77,13 @@ $footer = "<footer>
 </html>
       ";
 
-function getHeaderNav($currPage) {
+function get_header_nav($curr_page) {
   /*
    * determine header+navigation based on current page
    */
 
   //start the header
-  $headerNav = "<header>
+  $header_nav = "<header>
 		<h1>OPMC Fruit Sale Counting App</h1>
 </header>
 <nav>
@@ -91,22 +91,22 @@ function getHeaderNav($currPage) {
 	  ";
 
   //one variable for each nav item
-  $indexLink = "<li><a href='index.php'>Order Entry</a></li>\n";
-  $totalsLink = "<li><a href='totals.php'>Totals</a></li>\n";
-  $studentsLink = "<li><a href='students_report.php'>Students Report</a></li>\n";
+  $index_link = "<li><a href='index.php'>Order Entry</a></li>\n";
+  $totals_link = "<li><a href='totals.php'>Totals</a></li>\n";
+  $students_report_link = "<li><a href='students_report.php'>Students Report</a></li>\n";
 
   //figure out which page is active and add a class to it
-  $pageVar = $currPage . "Link";
-  $$pageVar = "<li><a id='activePage' " . substr($$pageVar, 7);
+  $page_var = $curr_page . "_link";
+  $$page_var = "<li><a id='activePage' " . substr($$page_var, 7);
 
   //concatenate strings to add nav items
-  $headerNav .= $indexLink . $totalsLink . $studentsLink;
+  $header_nav .= $index_link . $totals_link . $students_report_link;
 
   //close ending tags
-  $headerNav .= "</ul>
+  $header_nav .= "</ul>
 			  </nav>";
 
-  return $headerNav;
+  return $header_nav;
 }
 
 ?>

@@ -63,8 +63,8 @@ $page_data .= "</table>";
 $mysqli->close();
 
 // build the page
-echo pageHead("OPMC Fruit Sale App - Totals");
-echo getHeaderNav("totals"); 
+echo page_head("OPMC Fruit Sale App - Totals");
+echo get_header_nav("totals"); 
 echo $page_data;
 echo $footer;
 

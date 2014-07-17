@@ -97,7 +97,7 @@ function get_header_nav($curr_page) {
 
   //figure out which page is active and add a class to it
   $page_var = $curr_page . "_link";
-  $$page_var = "<li><a id='activePage' " . substr($$page_var, 7);
+  $$page_var = "<li><a id='active_page' " . substr($$page_var, 7);
 
   //concatenate strings to add nav items
   $header_nav .= $index_link . $totals_link . $students_report_link;

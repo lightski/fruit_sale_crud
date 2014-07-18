@@ -1,0 +1,2 @@
+# don't track our configuration file
+db_config.php

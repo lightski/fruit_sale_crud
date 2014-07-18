@@ -17,7 +17,7 @@ $results = $query->get_result();
 $num_students = $results->num_rows;
 // these won't be recorded as fruit items
 $ignore_types = array("ID","fname","lname");
-
+$all_items = 0;
 while($results_arr = $results->fetch_assoc()) {
 	// first returned array has NULL results. use array_filter() to clean it up
 	/*
@@ -26,10 +26,11 @@ while($results_arr = $results->fetch_assoc()) {
 	echo "</pre>";
 	 */
 	// for each record returned
-	foreach ($results_arr as $item_name => $item_value) {
+	foreach ($results_arr as $item_name => $item_amount) {
 		//  if record is a fruit item, add it to totals
 		if (!(in_array($item_name, $ignore_types))){
-			$fruit_items[$item_name]["amount"] += $item_value;
+			$fruit_items[$item_name]["amount"] += $item_amount;
+			$all_items += $item_amount;
 		}
 	}
 }
@@ -57,12 +58,15 @@ foreach($fruit_items as $item) {
 	$page_data .= "<th>" . $item["amount"] . "</th>";
 	$page_data .= "</tr>";
 }
-
-$page_data .= "</table>";
+$page_data .= "<tr align=\"left\">
+		<th>All Items</th>
+		<th>$all_items</th>
+	</tr>
+</table>";
 
 $mysqli->close();
 
-// build the page
+// output the page
 echo page_head("OPMC Fruit Sale App - Totals");
 echo get_header_nav("totals"); 
 echo $page_data;

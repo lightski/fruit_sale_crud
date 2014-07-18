@@ -69,7 +69,7 @@ function page_head($page_title) {
 }
 
 $footer = "<footer>
-	<p>Oostburg Parents Music Club Fruit Sale Counting WebApp<br>
+	<p>Oostburg Parents Music Club Fruit Sale Counting App<br>
    by Dan Leitzke 2014 - " . date("Y") . " drleitzke[at]gmail[dot]com<br>
 	</p>
 </footer>

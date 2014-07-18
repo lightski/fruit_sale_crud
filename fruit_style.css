@@ -1,7 +1,89 @@
 /* style up the fruit sale counting app */
+body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
 input[type="number"] {
-  width: 5%;
+  width: 10%;
 }
 a#active_page {
-	color: red;
+	color: rgb(255, 0, 0);
+	border: solid 1px rgb(255, 0, 0);
+}
+
+/* inline navigation is best navigation */
+nav ul {
+	padding: 0px 10px 10px 10px;
+}
+nav ul li{
+   list-style-type: none;
+   display: inline;
+   padding: 0px 20px 0px 0px;
+}
+nav ul li a {
+	font-size: 150%;
+	text-decoration: none;
+    color: #000080;
+	padding: 5px;
+}
+nav a:hover{
+	color: rgb(255, 0, 0);
+	border: solid 1px rgb(255, 0, 0);
+}
+nav a:active{
+	color: #2E2E2E;
+}
+
+/* make input form line up nicely */
+form div {
+	display: table-row;
+	width: 20%;
+	float: left;
+	margin: 0px 1%;
+}
+form div input {
+	float: right;
+}
+form input[type="submit"] {
+	width: 10%;
+	height: 10%;
+	clear: both;
+	display: block;
+	margin: 1%;
+}
+
+/* fix up the huge table on students report page */
+table { 
+	page-break-inside: auto;
+}
+tr {
+   	page-break-inside: avoid;
+	page-break-after: auto;
+}
+thead {	display: table-header-group; }
+tfoot { display: table-footer-group; }
+/* mostly swiped from a blog post- http://jimmybonney.com/articles/column_header_rotation_css/ */
+thead tr th.rotate-45 {
+	height: 80px;
+	width: 40px;
+	min-width: 40px;
+	max-width: 40px;
+	position: relative;
+	vertical-align: bottom;
+	padding: 0;
+	font-size: 14px;
+	line-height: 0.8;
+}
+thead tr th.rotate-45 > div {
+	position: relative;
+	top: 0px;
+	height: 150%;
+	overflow: hidden;
+}	
+thead tr th.rotate-45 span {
+	transform: skew(45deg,0deg) rotate(315deg);
+	position: absolute;
+	bottom: 50px;
+	left: -25px;
+	width: 100px;
+	text-align: left;
 }

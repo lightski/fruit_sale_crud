@@ -33,9 +33,11 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
   }
 
   // print $_POST array for testing purposes
+  /*
   echo "<pre>";
   print_r($_POST);
   echo "</pre>";
+  */
 
   $query = "INSERT INTO `students_fruit_2014` SET ";
   $val_arr = array();

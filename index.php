@@ -6,19 +6,18 @@ error_reporting(-1);
 ini_set('display_errors', 'On');
 
 $order_form = "<h2>This is the form to enter stuff:</h2>
-<form action=\"process.php\" method=\"post\">
-  <input type=\"text\" name=\"fname\" placeholder=\"first name\" autofocus><br>
-  <input type=\"text\" name=\"lname\" placeholder=\"last name\"><br><br>";
+	<form action=\"process.php\" method=\"post\">
+	<label>Student</label>
+	<input type=\"text\" name=\"fname\" placeholder=\"first name\" autofocus>
+	<input type=\"text\" name=\"lname\" placeholder=\"last name\"><br><br>";
 
-$counter = 1;
 // $fruit_items is from page_defs.php
 foreach ($fruit_items as $shortname => $attrib_array) {
-	// create an input for each type of fruit.
-	$order_form .= "<label>".$attrib_array["name"]."</label> <input type=\"number\" name=\"$shortname\" placeholder=\"0\" min=\"0\" max=\"999\">";
-    if ($counter % 4 == 0) {
-		$order_form .= "<br><br>";
-    }
-	$counter++;
+	// create an input for each type of fruit, divs for style
+	$order_form .= "<div>";
+	$order_form .= "<label>".$attrib_array["name"]."</label>";
+	$order_form.= "<input type=\"number\" name=\"$shortname\" placeholder=\"0\" min=\"0\" max=\"999\">";
+	$order_form .= "</div>";
 }
 
 $order_form .= "<br>

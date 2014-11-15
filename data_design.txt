@@ -38,10 +38,3 @@ CREATE TABLE students_fruit_2014 (
   PRIMARY KEY ( ID )
 );
 
-
-
-db connection info
-db - hackfinder
-usr - root
-pass -
-server - localhost

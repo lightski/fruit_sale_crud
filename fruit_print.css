@@ -1,0 +1,14 @@
+/* style for printing
+ * especially useful for getting the report on one page
+ */
+body {
+	font-family: Georgia, serif;
+	width: 100%;
+	margin: none;
+	padding: none;
+}
+
+header, nav, footer{
+	display: none;
+}
+

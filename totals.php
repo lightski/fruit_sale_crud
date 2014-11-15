@@ -40,23 +40,32 @@ $results->close();
 
 //var_dump($fruit_items);
 
-$page_data = "<h2>This is the summary of all orders entered.</h2>";
-$page_data .= "<p>Current year: ". date(Y) . "</p>"; // temporary until fix for better functionality
-$page_data .= "<p># of students entered: " . $num_students . "</p>";
-$page_data .="<h3>Totals</h3>
-	<table border=\"1\" cellspacing=\"5\" cellpadding=\"5\">
+$page_data = "<h2>Order Summary</h2>";
+$page_data .= "<p>Current year: ". date(Y) . "; "; // temporary until fix for better functionality
+$page_data .= " Students entered: " . $num_students . "</p>";
+$page_data .="<table border=\"1\" cellspacing=\"5\" cellpadding=\"5\">
 	<tr align=\"center\">
 		<th>Item Name</th>
 		<th>Quantity</th>
+		<th></th>
+		<th></th>
 	</tr>";
 
 // then we just need to loop through the array of fruit items,
 // print each name off as left column, total boxes as right column
+$first = true;
 foreach($fruit_items as $item) {
-	$page_data .= "<tr align=\"left\">";
-	$page_data .= "<th>" . $item["name"] . "</th>";
-	$page_data .= "<th>" . $item["amount"] . "</th>";
-	$page_data .= "</tr>";
+	if($first){
+		$page_data .= "<tr align=\"left\">";
+		$page_data .= "<th>" . $item["name"] . "</th>";
+		$page_data .= "<th>" . $item["amount"] . "</th>";
+		$first = false;
+	} else {
+		$page_data .= "<th>" . $item["name"] . "</th>";
+		$page_data .= "<th>" . $item["amount"] . "</th>";
+		$page_data .= "</tr>";
+		$first = true;
+	}
 }
 $page_data .= "<tr align=\"left\">
 		<th>All Items</th>

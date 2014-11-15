@@ -87,3 +87,8 @@ thead tr th.rotate-45 span {
 	width: 100px;
 	text-align: left;
 }
+
+/* hide form inputs until student lookup completes */
+.order_form {
+	display: none;
+}

@@ -26,8 +26,9 @@ author: dan leitzke 06/30/2014
 [FUTURE ADD-ONS]
 	-Tweak student report column headers for readability
 	-Proper data validation in process.php - only characters in fname/lname and only numbers in fruit
+	-Proper data validation in index.php - $_GET["id"] is pretty insecure currently
 	-User switchable years, which creates new table in database
-	 (and switches to that for inserts and queries) must show up in totals.php as well
-	-Success message and failure message for data entry
-	-Box on index page for student lookup via fname or lname; allow user to edit student's order
-
+	 (and switches to that for inserts and queries) must show up in totals and student report
+	-Success and failure messages for data entry and updates. make it more reactive to user.
+	-Mobile styling???
+	+Box on index page for student lookup via fname or lname; allow user to edit student's order.{Added 11/15/14 DL}

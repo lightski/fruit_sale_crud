@@ -1,4 +1,10 @@
 <?php
+/*
+ * totals.php
+ * Queries database to generate a one-page summary of the total fruit order.
+ * Calculates total by adding up each student's orders. Table layout is wonky in order to keep
+ *  it to a single page especially when printing.
+ */
 require_once "page_defs.php";
 require_once "db_config.php";
 // connecting to db
@@ -47,8 +53,8 @@ $page_data .="<table border=\"1\" cellspacing=\"5\" cellpadding=\"5\">
 	<tr align=\"center\">
 		<th>Item Name</th>
 		<th>Quantity</th>
-		<th></th>
-		<th></th>
+		<th>Item Name</th>
+		<th>Quantity</th>
 	</tr>";
 
 // then we just need to loop through the array of fruit items,
@@ -67,8 +73,7 @@ foreach($fruit_items as $item) {
 		$first = true;
 	}
 }
-$page_data .= "<tr align=\"left\">
-		<th>All Items</th>
+$page_data .= "<th>All Items</th>
 		<th>$all_items</th>
 	</tr>
 </table>";

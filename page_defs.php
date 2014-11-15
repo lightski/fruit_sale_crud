@@ -70,7 +70,6 @@ function get_header_nav($curr_page) {
 
   // one variable for each nav item
   $index_link = "<li><a href='index.php'>Order Entry</a></li>\n";
-  $edit_order_link = "<li><a href='edit_order.php'>Edit Order</a></li>\n";
   $totals_link = "<li><a href='totals.php'>Totals</a></li>\n";
   $students_report_link = "<li><a href='students_report.php'>Students Report</a></li>\n";
 
@@ -79,7 +78,7 @@ function get_header_nav($curr_page) {
   $$page_var = "<li><a id='active_page' " . substr($$page_var, 7);
 
   // concatenate strings to add nav items
-  $header_nav .= $index_link . $edit_order_link . $totals_link . $students_report_link;
+  $header_nav .= $index_link . $totals_link . $students_report_link;
 
   // close ending tags
   $header_nav .= "</ul>
@@ -88,4 +87,4 @@ function get_header_nav($curr_page) {
   return $header_nav;
 }
 
-?>
+// no closing tag

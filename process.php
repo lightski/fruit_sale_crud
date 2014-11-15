@@ -22,70 +22,100 @@ function has_presence($value) {
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 	//only do stuff if user requested this by submitting form via POST
 
-  //db connection variables
-  require_once 'db_config.php';
-  //connecting to db
-  $mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE, DB_PORT);
-  //check db connection
-  if ($mysqli->connect_errno) {
-      echo "Connection Failed: " . $mysqli->connect_error;
-      die();
-  }
+	//db connection variables
+	require_once 'db_config.php';
+	//connecting to db
+	$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE, DB_PORT);
+	//check db connection
+	if ($mysqli->connect_errno) {
+	  echo "Connection Failed: " . $mysqli->connect_error;
+	  die();
+	}
 
-  // print $_POST array for testing purposes
-  /*
-  echo "<pre>";
-  print_r($_POST);
-  echo "</pre>";
-  */
+	// print $_POST array for testing purposes
+	echo "<pre>";
+	print_r($_POST);
+	echo "</pre>";
 
-  $query = "INSERT INTO `students_fruit_2014` SET ";
-  $val_arr = array();
-  $val_arr[0] = "";
-  $counter = 0;
+	if ($_POST["query_type"] == "new") {
+		$query_start = "INSERT INTO `students_fruit_2014` SET ";
+		$query_end = "";
+	} else if ($_POST["query_type"] == "update") {
+		$query_start = "UPDATE `students_fruit_2014` SET ";
+		$query_end = " WHERE `ID`=?";
+	}
 
-  foreach ($_POST as $DIRTY_column => $DIRTY_data) {
+	$query = "";
+	$val_arr = array();
+	$val_arr[0] = "";
+	$counter = 0;
+	// process student sub-array and add to query
+	foreach ($_POST["student"] as $DIRTY_column => $DIRTY_data){
+		if (has_presence($DIRTY_column) && has_presence($DIRTY_data) && $DIRTY_column !== "id") {
+			// ADD VALIDATION CHECK ABOVE
+			$data_name = "data".$counter;
+			$$data_name = $DIRTY_data;
+			$column = $DIRTY_column;
+
+			// add value to array. key is column name, value is data.
+			$query .= "`$column`=?,";
+			// pass by reference for the reflection class later
+			$val_arr[] = &$$data_name;
+			$counter++;
+			// WARNING! assuming $$data_name is textual!
+			$val_arr[0] .= "s";
+		}
+	}
+
+	// process order sub-array and add to query
+	foreach ($_POST["order"] as $DIRTY_column => $DIRTY_data) {
 	// first check the values.
-	  if (has_presence($DIRTY_column) && has_presence($DIRTY_data)) {
-		  // ADD VALIDATION CHECK ABOVE
-		  $data_name = "data".$counter;
-		  $$data_name = $DIRTY_data;
-		  $column = $DIRTY_column;
+		if (has_presence($DIRTY_column) && has_presence($DIRTY_data)) {
+			// ADD VALIDATION CHECK ABOVE
+			$data_name = "data".$counter;
+			$$data_name = $DIRTY_data;
+			$column = $DIRTY_column;
 
-	    // add value to array. key is column name, value is data.
-		  $query .= "`$column`=?,";
-		  // pass by reference for the reflection class later
-		  $val_arr[] = &$$data_name;
-		  $counter++;
+			// add value to array. key is column name, value is data.
+			$query .= "`$column`=?,";
+			// pass by reference for the reflection class later
+			$val_arr[] = &$$data_name;
+			$counter++;
+			// WARNING! assuming $$data_name is numeric!
+			$val_arr[0] .= "i";
+		}
+	} 
+	// remove trailing comma
+	$query = substr($query, 0, -1);
 
-		  if (is_numeric($$data_name)) {
-			  $val_arr[0] .= "i";
-		  } else {
-			  $val_arr[0] .= "s";
-		  }
-	  }
-  } // end for
-  // remove trailing comma
-  $query = substr($query, 0, -1);
+	$total_query = $query_start . $query . $query_end;
 
-  // testing purposes
-  /*
-  echo $query;
+	if($_POST["query_type"] == "update"){
+// ADD extra params here for update query
+//  should also really be tested first...
+		$val_arr[] = &$_POST["student"]["id"];
+		$val_arr[0] .= "i";
+	}
+
+	// testing purposes
+/*
+  echo $total_query;
   echo "<br><pre>";
   print_r($val_arr);
   echo "</pre>";
-  */
+ */
 
   // big crazy database thing w/prepared statements
   // mostly from comment section here: http://www.php.net/manual/en/mysqli-stmt.bind-param.php
-  $res = $mysqli->prepare($query);
+  $res = $mysqli->prepare($total_query);
   $ref = new ReflectionClass('mysqli_stmt');
   $method = $ref->getMethod("bind_param");
   $method->invokeArgs($res, $val_arr); // note $val_arr contains references to variables; see above.
   $res->execute();
 	
-  // done inserting, so go back to index 
+  // done altering database, so go back to correct page
   redirect_to("index.php");
+  die();
 
 } else {
 	//page was not requested by sending the form. go back!

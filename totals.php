@@ -49,33 +49,37 @@ $results->close();
 $page_data = "<h2>Order Summary</h2>";
 $page_data .= "<p>Current year: ". date(Y) . "; "; // temporary until fix for better functionality
 $page_data .= " Students entered: " . $num_students . "</p>";
-$page_data .="<table border=\"1\" cellspacing=\"5\" cellpadding=\"5\">
-	<tr align=\"center\">
+$page_data .="<table>
+	<thead>
+	<tr>
 		<th>Item Name</th>
 		<th>Quantity</th>
 		<th>Item Name</th>
 		<th>Quantity</th>
-	</tr>";
+	</tr>
+	</thead>
+	<tbody>";
 
 // then we just need to loop through the array of fruit items,
 // print each name off as left column, total boxes as right column
 $first = true;
 foreach($fruit_items as $item) {
 	if($first){
-		$page_data .= "<tr align=\"left\">";
-		$page_data .= "<th>" . $item["name"] . "</th>";
-		$page_data .= "<th>" . $item["amount"] . "</th>";
+		$page_data .= "<tr>";
+		$page_data .= "<td>" . $item["name"] . "</td>";
+		$page_data .= "<td>" . $item["amount"] . "</td>";
 		$first = false;
 	} else {
-		$page_data .= "<th>" . $item["name"] . "</th>";
-		$page_data .= "<th>" . $item["amount"] . "</th>";
+		$page_data .= "<td>" . $item["name"] . "</td>";
+		$page_data .= "<td>" . $item["amount"] . "</td>";
 		$page_data .= "</tr>";
 		$first = true;
 	}
 }
-$page_data .= "<th>All Items</th>
-		<th>$all_items</th>
+$page_data .= "<td>All Items</td>
+		<td class=\"all_items\">$all_items</td>
 	</tr>
+	</tbody>
 </table>";
 
 $mysqli->close();

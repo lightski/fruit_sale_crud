@@ -54,12 +54,20 @@ form input[type="submit"] {
 /* fix up the huge table on students report page */
 table { 
 	page-break-inside: auto;
+	border-collapse: collapse;
+	border: 1px solid black;
 }
-tr {
+table td {
+	border: 1px solid black;
+	padding: 1% 0;
+}
+table tr {
+	text-align: center;
    	page-break-inside: avoid;
 	page-break-after: auto;
 }
 thead {	display: table-header-group; }
+thead tr th { border: 1px solid black; }
 tfoot { display: table-footer-group; }
 /* mostly swiped from a blog post- http://jimmybonney.com/articles/column_header_rotation_css/ */
 thead tr th.rotate-45 {
@@ -67,9 +75,6 @@ thead tr th.rotate-45 {
 	width: 40px;
 	min-width: 40px;
 	max-width: 40px;
-	position: relative;
-	vertical-align: bottom;
-	padding: 0;
 	font-size: 14px;
 	line-height: 0.8;
 }
@@ -80,7 +85,7 @@ thead tr th.rotate-45 > div {
 	overflow: hidden;
 }	
 thead tr th.rotate-45 span {
-	transform: skew(45deg,0deg) rotate(315deg);
+	transform: rotate(-90deg);
 	position: absolute;
 	bottom: 50px;
 	left: -25px;
@@ -91,4 +96,9 @@ thead tr th.rotate-45 span {
 /* hide form inputs until student lookup completes */
 .order_form {
 	display: none;
+}
+
+/* make total figure more obvious */
+.all_items {
+	font-size: 2em;
 }

@@ -12,3 +12,16 @@ header, nav, footer{
 	display: none;
 }
 
+/* removed table inline stylings; re-added here */
+table {
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+table td {
+	border: 1px solid black;
+	padding: 1% 0;
+}
+table tr { text-align: center; }
+thead tr th { border: 1px solid black; }
+thead { display: table-header-group; }
+

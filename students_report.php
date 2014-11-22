@@ -28,10 +28,10 @@ $num_students = $results->num_rows;
 $page_data = "<h2>Each student's order. Click name to edit order.</h2>";
 $page_data .= "<p>Current year: ". date(Y) . ";"; // temporary until fix for better functionality
 $page_data .= " Students entered: " . $num_students . "</p>";
-$page_data .="<table border=\"1\" cellspacing=\"5\" cellpadding=\"5\">
+$page_data .="<table>
 	<thead>
-	<tr align=\"center\">
-		<th class=\"rotate-45\"><div><span>Name</span></div></th>";
+	<tr>
+		<th><div><span>Name</span></div></th>";
 
 // add all the fruit item types to table as column headers
 foreach($fruit_items as $item) {
@@ -51,7 +51,7 @@ while($results_arr = $results->fetch_assoc()) {
 */
 	$student_total = 0;
 	// for each record (student in this case) returned
-	$page_data .= "<tr align=\"left\">";
+	$page_data .= "<tr>";
 	// unified name column
 	$page_data .= "<td><a href=index.php?id=" . $results_arr["ID"] . ">" . $results_arr["fname"] . " " . $results_arr["lname"] . "</a></td>";
 	foreach ($results_arr as $item_name => $item_value) {

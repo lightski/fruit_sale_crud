@@ -24,7 +24,7 @@ author: dan leitzke 06/30/2014
 	-PROTIF!
 
 [FUTURE ADD-ONS]
-	-Tweak student report column headers for readability
+	-fix report appearance in Chrome column headers
 	-Proper data validation in process.php - only characters in fname/lname and only numbers in fruit
 	-Proper data validation in index.php - $_GET["id"] is pretty insecure currently
 	-User switchable years, which creates new table in database
@@ -32,3 +32,4 @@ author: dan leitzke 06/30/2014
 	-Success and failure messages for data entry and updates. make it more reactive to user.
 	-Mobile styling???
 	+Box on index page for student lookup via fname or lname; allow user to edit student's order.{Added 11/15/14 DL}
+	+Tweak student report column headers for readability {Removed slant 11/22/14 DL}

@@ -19,6 +19,9 @@ function has_presence($value) {
 	return isset($value) && $value !== "";
 }
 
+// page we return to after processing
+$return_loc = "index.php";
+
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 	//only do stuff if user requested this by submitting form via POST
 
@@ -33,9 +36,11 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
 	}
 
 	// print $_POST array for testing purposes
+	/*
 	echo "<pre>";
 	print_r($_POST);
 	echo "</pre>";
+	 */
 
 	if ($_POST["query_type"] == "new") {
 		$query_start = "INSERT INTO `students_fruit_2014` SET ";
@@ -43,6 +48,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
 	} else if ($_POST["query_type"] == "update") {
 		$query_start = "UPDATE `students_fruit_2014` SET ";
 		$query_end = " WHERE `ID`=?";
+		$return_loc = "students_report.php";
 	}
 
 	$query = "";
@@ -114,7 +120,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
   $res->execute();
 	
   // done altering database, so go back to correct page
-  redirect_to("index.php");
+  redirect_to($return_loc);
   die();
 
 } else {

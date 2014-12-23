@@ -19,11 +19,12 @@ author: dan leitzke 06/30/2014
 	-open index.php and start entering orders
 
 [@TODO]
-	-deploy to server, protect with username/password
-	-???
-	-PROTIF!
+	-add total dollar amount and total profit amount on totals.php and students_report.php
+	-fit students_report.php on single page for printing
 
 [FUTURE ADD-ONS]
+	-running total, in $$ and # items, on order entry page
+	-delete functionality, with confirmation, on students_report page
 	-fix report appearance in Chrome column headers
 	-Proper data validation in process.php - only characters in fname/lname and only numbers in fruit
 	-Proper data validation in index.php - $_GET["id"] is pretty insecure currently
@@ -31,5 +32,8 @@ author: dan leitzke 06/30/2014
 	 (and switches to that for inserts and queries) must show up in totals and student report
 	-Success and failure messages for data entry and updates. make it more reactive to user.
 	-Mobile styling???
-	+Box on index page for student lookup via fname or lname; allow user to edit student's order.{Added 11/15/14 DL}
+
+	-rewrite as a meteor.js app???
+
+	+Allow user to edit student's order via clickable links on students_report {Added 11/15/14 DL}
 	+Tweak student report column headers for readability {Removed slant 11/22/14 DL}

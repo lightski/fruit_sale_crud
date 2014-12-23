@@ -36,7 +36,7 @@ if(isset($_GET["id"])){
 	$order_form  .= "<form action=\"process.php\" method=\"post\">
 		<label>Student</label>
 		<input type=\"text\" name=\"student[fname]\" placeholder=\"first name\" value=\"" . $results_arr["fname"] . "\" autofocus>
-		<input type=\"text\" name=\"student[lname]\" placeholder=\"last name\" value=\"" . $results_arr["lname"] . "\"><br><br>";
+		<input type=\"text\" name=\"student[lname]\" placeholder=\"last name\" value=\"" . $results_arr["lname"] . "\"><br /><br />";
 
 	// $fruit_items is from page_defs.php
 	foreach ($fruit_items as $shortname => $attrib_array) {

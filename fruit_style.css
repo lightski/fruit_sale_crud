@@ -1,6 +1,7 @@
 /* style up the fruit sale counting app */
 body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	margin: 2%;
 }
 input[type="number"] {
   width: 10%;
@@ -69,6 +70,7 @@ table tr {
 thead {	display: table-header-group; }
 thead tr th { border: 1px solid black; }
 tfoot { display: table-footer-group; }
+
 /* mostly swiped from a blog post- http://jimmybonney.com/articles/column_header_rotation_css/ */
 thead tr th.rotate-45 {
 	height: 80px;
@@ -92,6 +94,9 @@ thead tr th.rotate-45 span {
 	width: 100px;
 	text-align: left;
 }
+table tbody tr:nth-of-type(odd) {
+	background-color:rgb(190,190,190);
+}
 
 /* hide form inputs until student lookup completes */
 .order_form {
@@ -101,4 +106,9 @@ thead tr th.rotate-45 span {
 /* make total figure more obvious */
 .all_items {
 	font-size: 2em;
+}
+
+/* misc */
+footer {
+	margin-top: 5%;
 }

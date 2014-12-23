@@ -35,7 +35,7 @@ $page_data .="<table>
 
 // add all the fruit item types to table as column headers
 foreach($fruit_items as $item) {
-	$page_data .= "<th class=\"rotate-45\"><div><span>" . $item["name"] . "</span></div></th>";
+	$page_data .= "\n<th class=\"rotate-45\"><div><span>" . $item["name"] . "</span></div></th>";
 }
 $page_data .= "<th class=\"rotate-45\"><div><span>Total Items</span></div></th>
 	</tr>
@@ -43,17 +43,18 @@ $page_data .= "<th class=\"rotate-45\"><div><span>Total Items</span></div></th>
 	<tbody>";
 
 while($results_arr = $results->fetch_assoc()) {
-	// first returned array has NULL results. use array_filter() to clean it up
 /*	
+	// first returned array has NULL results. 
+	// use array_filter() to clean it up
 	echo "<pre>";
 	print_r(array_filter($results_arr));
 	echo "</pre>";
 */
 	$student_total = 0;
 	// for each record (student in this case) returned
-	$page_data .= "<tr>";
+	$page_data .= "\n<tr>";
 	// unified name column
-	$page_data .= "<td><a href=index.php?id=" . $results_arr["ID"] . ">" . $results_arr["fname"] . " " . $results_arr["lname"] . "</a></td>";
+	$page_data .= "<td><a href=\"index.php?id=" . $results_arr["ID"] . "\">" . $results_arr["fname"] . " " . $results_arr["lname"] . "</a></td>";
 	foreach ($results_arr as $item_name => $item_value) {
 		//  add student's sales data to table. ignore id, fname, and lname because they aren't fruit.
 		if (!in_array($item_name,$ignore_cols)) {
@@ -66,10 +67,10 @@ while($results_arr = $results->fetch_assoc()) {
 		}
 	}
 	$page_data .= "<td>" . $student_total . "</td>";
-	$page_data .= "</tr>
-		</tbody>";
+	$page_data .= "</tr>";
 }
-$page_data .= "</table>";
+$page_data .= "\n</tbody>
+	</table>";
 // release results
 $results->close();
 // close db conn

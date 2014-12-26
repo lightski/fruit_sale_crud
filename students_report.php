@@ -15,9 +15,6 @@ if ($mysqli->connect_errno) {
   die();
 }
 
-// going to be ignoring these columns later
-$ignore_cols = ["ID", "fname", "lname"];
-
 // query database for each student and their sales
 $query = $mysqli->prepare('SELECT * FROM students_fruit_2014 ORDER BY lname,fname ASC');
 $query->execute();
@@ -25,13 +22,13 @@ $results = $query->get_result();
 // # records returned = # of students
 $num_students = $results->num_rows;
 
-$page_data = "<h2>Each student's order. Click name to edit order.</h2>";
+$page_data = "<h2>Each student's order</h2>";
 $page_data .= "<p>Current year: ". date(Y) . ";"; // temporary until fix for better functionality
 $page_data .= " Students entered: " . $num_students . "</p>";
 $page_data .="<table>
 	<thead>
 	<tr>
-		<th><div><span>Name</span></div></th>";
+		<th><div><span>Name<br>(click to edit)</span></div></th>";
 
 // add all the fruit item types to table as column headers
 foreach($fruit_items as $item) {
@@ -57,7 +54,7 @@ while($results_arr = $results->fetch_assoc()) {
 	$page_data .= "<td><a href=\"index.php?id=" . $results_arr["ID"] . "\">" . $results_arr["fname"] . " " . $results_arr["lname"] . "</a></td>";
 	foreach ($results_arr as $item_name => $item_value) {
 		//  add student's sales data to table. ignore id, fname, and lname because they aren't fruit.
-		if (!in_array($item_name,$ignore_cols)) {
+		if (!in_array($item_name,["ID", "fname", "lname"])) {
 			if(isset($item_value)){
 				$page_data .= "<td>" . $item_value . "</td>";
 			} else {

@@ -3,30 +3,34 @@
 /*
 * first define the array of all fruit items
 * key = mysql table name, value = full name for frontend label purposes
-*/
-$fruit_items = array("naval_orang_full" => array("name" => "Naval Oranges Full Box", "amount" => 0),
-	 				 "naval_orang_half" => array("name" => "Naval Oranges Half Box", "amount" => 0),
-					 "red_grape_full" => array("name" => "Red Grapefruit Full Box", "amount" => 0),
-					 "red_grape_half" => array("name" => "Red Grapefruit Half Box", "amount" => 0),
-					 "grann_smith_full" => array("name" => "Granny Smith Full Box", "amount" => 0),
-					 "grann_smith_half" => array("name" => "Granny Smith Half Box", "amount" => 0),
-					 "red_delic_full" => array("name" => "Red Delicious Full Box", "amount" => 0),
-					 "red_delic_half" => array("name" => "Red Delicious Half Box", "amount" => 0),
-				     "golde_delic_full" => array("name" => "Golden Delicious Full Box", "amount" => 0),
-					 "golde_delic_half" => array("name" => "Golden Delicious Half Box", "amount" => 0),
-				     "braeb_full" => array("name" => "Braeburn Full Box", "amount" => 0),
-				     "braeb_half" => array("name" => "Braeburn Half Box", "amount" => 0),
-				     "danjo_pears_full" => array("name" => "D'Anjou Full Box", "amount" => 0),
-				     "danjo_pears_half" => array("name" => "D'Anjou Half Box", "amount" => 0),
-					 "mixed_a" => array("name" => "Mixed Box A", "amount" => 0),
-				     "mixed_b" => array("name" => "Mixed Box B", "amount" => 0),
-					 "mixed_c" => array("name" => "Mixed Box C", "amount" => 0),
-					 "mixed_d" => array("name" => "Mixed Box D", "amount" => 0),
-				     "gift_l" => array("name" => "Gift Box L", "amount" => 0),
-				     "gift_s" => array("name" => "Gift Box S", "amount" => 0),
-					 "gift_lp" => array("name" => "Gift Box LP", "amount" => 0),
-				     "gitf_sp" => array("name" => "Gift Box SP", "amount" => 0),
-					 "pinea" => array("name" => "Pineapple", "amount" => 0));
+* amount from student table of whatever year we're in
+* price and profit from line in years table 
+ */
+
+//@TODO get price and profit from years table once then update on year change. 
+$fruit_items = array("naval_orang_full" => array("name" => "Naval Oranges Full Box", "price" => 0.00, "profit" => 0.00),
+	 				 "naval_orang_half" => array("name" => "Naval Oranges Half Box", "price" => 0.00, "profit" => 0.00),
+					 "red_grape_full" => array("name" => "Red Grapefruit Full Box", "price" => 0.00, "profit" => 0.00),
+					 "red_grape_half" => array("name" => "Red Grapefruit Half Box", "price" => 0.00, "profit" => 0.00),
+					 "grann_smith_full" => array("name" => "Granny Smith Full Box", "price" => 0.00, "profit" => 0.00),
+					 "grann_smith_half" => array("name" => "Granny Smith Half Box", "price" => 0.00, "profit" => 0.00),
+					 "red_delic_full" => array("name" => "Red Delicious Full Box", "price" => 0.00, "profit" => 0.00),
+					 "red_delic_half" => array("name" => "Red Delicious Half Box", "price" => 0.00, "profit" => 0.00),
+				     "golde_delic_full" => array("name" => "Golden Delicious Full Box", "price" => 0.00, "profit" => 0.00),
+					 "golde_delic_half" => array("name" => "Golden Delicious Half Box", "price" => 0.00, "profit" => 0.00),
+				     "braeb_full" => array("name" => "Braeburn Full Box", "price" => 0.00, "profit" => 0.00),
+				     "braeb_half" => array("name" => "Braeburn Half Box", "price" => 0.00, "profit" => 0.00),
+				     "danjo_pears_full" => array("name" => "D'Anjou Full Box", "price" => 0.00, "profit" => 0.00),
+				     "danjo_pears_half" => array("name" => "D'Anjou Half Box", "price" => 0.00, "profit" => 0.00),
+					 "mixed_a" => array("name" => "Mixed Box A", "price" => 0.00, "profit" => 0.00),
+				     "mixed_b" => array("name" => "Mixed Box B", "price" => 0.00, "profit" => 0.00),
+					 "mixed_c" => array("name" => "Mixed Box C", "price" => 0.00, "profit" => 0.00),
+					 "mixed_d" => array("name" => "Mixed Box D", "price" => 0.00, "profit" => 0.00),
+				     "gift_l" => array("name" => "Gift Box L", "price" => 0.00, "profit" => 0.00),
+				     "gift_s" => array("name" => "Gift Box S", "price" => 0.00, "profit" => 0.00),
+					 "gift_lp" => array("name" => "Gift Box LP", "price" => 0.00, "profit" => 0.00),
+				     "gitf_sp" => array("name" => "Gift Box SP", "price" => 0.00, "profit" => 0.00),
+					 "pinea" => array("name" => "Pineapple", "price" => 0.00, "profit" => 0.00));
 /*
 * Page definition variables. Used to build consistent site head, header/navigation, and footer.
 *  repurposed from portfolio site. because reasons....
@@ -72,13 +76,14 @@ function get_header_nav($curr_page) {
   $index_link = "<li><a href='index.php'>Order Entry</a></li>\n";
   $totals_link = "<li><a href='totals.php'>Totals</a></li>\n";
   $students_report_link = "<li><a href='students_report.php'>Students Report</a></li>\n";
+  $profit_report_link = "<li><a href='profit_report.php'>Profits</a></li>\n";
 
   // figure out which page is active and add a class to it
   $page_var = $curr_page . "_link";
   $$page_var = "<li><a id='active_page' " . substr($$page_var, 7);
 
   // concatenate strings to add nav items
-  $header_nav .= $index_link . $totals_link . $students_report_link;
+  $header_nav .= $index_link . $totals_link . $students_report_link . $profit_report_link;
 
   // close ending tags
   $header_nav .= "</ul>

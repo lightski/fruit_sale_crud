@@ -38,3 +38,97 @@ CREATE TABLE students_fruit_2014 (
   PRIMARY KEY ( ID )
 );
 
+EDIT 12/22/14
+The time has come to make this application aware of what year it is. So we're adding a new table to track years and prices.
+The new table will also point to where each year's records are stored.
+ALSO note that the *_price here refers to the price the fruit was sold at, not the purchase price.
+We aren't doing anything with purchase price as of now.
+
+ID        year		order_table_name	nof_price	nof_profit noh_price noh_profit ETC
+PK, AI
+INT(4)   INT(4)    VARCHAR(25)			FLOAT       *           *		 *			*
+
+
+CREATE TABLE years (
+  ID INT(4) NOT NULL AUTO_INCREMENT,
+  year INT(4) NOT NULL,
+  order_table_name VARCHAR(25) NOT NULL,
+  nof_price FLOAT,	
+  nof_profit FLOAT,	
+  noh_price FLOAT,	
+  noh_profit FLOAT,	
+  rgf_price FLOAT,	
+  rgf_profit FLOAT,	
+  rgh_price FLOAT,	
+  rgh_profit FLOAT,	
+  gsf_price FLOAT,	
+  gsf_profit FLOAT,	
+  gsh_price FLOAT,	
+  gsh_profit FLOAT,	
+  rdf_price FLOAT,	
+  rdf_profit FLOAT,	
+  rdh_price FLOAT,	
+  rdh_profit FLOAT,	
+  gdf_price FLOAT,	
+  gdf_profit FLOAT,	
+  gdh_price FLOAT,	
+  gdh_profit FLOAT,	
+  bf_price FLOAT,	
+  bf_profit FLOAT,	
+  bh_price FLOAT,	
+  bh_profit FLOAT,	
+  dpf_price FLOAT,	
+  dpf_profit FLOAT,	
+  dph_price FLOAT,	
+  dph_profit FLOAT,	
+  ma_price FLOAT,	
+  ma_profit FLOAT,	
+  mb_price FLOAT,	
+  mb_profit FLOAT,	
+  mc_price FLOAT,	
+  mc_profit FLOAT,	
+  md_price FLOAT,	
+  md_profit FLOAT,	
+  gl_price FLOAT,	
+  gl_profit FLOAT,	
+  gs_price FLOAT,	
+  gs_profit FLOAT,	
+  glp_price FLOAT,	
+  glp_profit FLOAT,	
+  gsp_price FLOAT,	
+  gsp_profit FLOAT,	
+  p_price FLOAT,	
+  p_profit FLOAT,	
+  PRIMARY KEY ( ID )
+);
+
+First insert. Note that the trailing '.00' get stripped off by MYSQL, so it's 
+INSERT INTO years SET
+  year = 2014,
+  order_table_name = "students_fruit_2014",
+  nof_price = 35, nof_profit = 10.05,
+  noh_price = 23, noh_profit = 7.75,
+  rgf_price = 30, rgf_profit = 9.05,	
+  rgh_price = 21, rgh_profit = 8.05,
+  gsf_price = 28, gsf_profit = 9.05,	
+  gsh_price = 18, gsh_profit = 7.15,
+  rdf_price = 28, rdf_profit = 9.75,	
+  rdh_price = 18, rdh_profit = 7.55,
+  gdf_price = 28, gdf_profit = 9.75,
+  gdh_price = 18, gdh_profit = 7.55,
+  bf_price = 28, bf_profit = 9.05,
+  bh_price = 18, bh_profit = 7.15,
+  dpf_price = 28, dpf_profit = 8.25,
+  dph_price = 18, dph_profit = 6.60,
+  ma_price = 27, ma_profit = 7.50,
+  mb_price = 27, mb_profit = 7.50,
+  mc_price = 27, mc_profit = 8.25,
+  md_price = 27, md_profit = 8.05,
+  gl_price = 27, gl_profit = 8.25,
+  gs_price = 20, gs_profit = 7.05,
+  glp_price = 27, glp_profit = 8.25,
+  gsp_price = 20, gsp_profit = 7.05,
+  p_price = 5.25, p_profit = 3.49
+;
+
+

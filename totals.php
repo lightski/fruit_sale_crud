@@ -21,8 +21,6 @@ $query->execute();
 $results = $query->get_result();
 // # records returned = # of students
 $num_students = $results->num_rows;
-// these won't be recorded as fruit items
-$ignore_types = array("ID","fname","lname");
 $all_items = 0;
 while($results_arr = $results->fetch_assoc()) {
 	// first returned array has NULL results. use array_filter() to clean it up
@@ -34,7 +32,7 @@ while($results_arr = $results->fetch_assoc()) {
 	// for each record returned
 	foreach ($results_arr as $item_name => $item_amount) {
 		//  if record is a fruit item, add it to totals
-		if (!(in_array($item_name, $ignore_types))){
+		if (!(in_array($item_name, ["ID","fname","lname"]))){
 			$fruit_items[$item_name]["amount"] += $item_amount;
 			$all_items += $item_amount;
 		}

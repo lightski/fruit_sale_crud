@@ -29,7 +29,7 @@ $fruit_items = array("naval_orang_full" => array("name" => "Naval Oranges Full B
 				     "gift_l" => array("name" => "Gift Box L", "price" => 0.00, "profit" => 0.00),
 				     "gift_s" => array("name" => "Gift Box S", "price" => 0.00, "profit" => 0.00),
 					 "gift_lp" => array("name" => "Gift Box LP", "price" => 0.00, "profit" => 0.00),
-				     "gitf_sp" => array("name" => "Gift Box SP", "price" => 0.00, "profit" => 0.00),
+				     "gift_sp" => array("name" => "Gift Box SP", "price" => 0.00, "profit" => 0.00),
 					 "pinea" => array("name" => "Pineapple", "price" => 0.00, "profit" => 0.00));
 /*
 * Page definition variables. Used to build consistent site head, header/navigation, and footer.

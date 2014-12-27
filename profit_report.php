@@ -22,41 +22,44 @@ if ($mysqli->connect_errno) {
 
 // until that's done, just use 2014
 $year = 2014;
-// query for price info
+// query for price and profits
 $price_query = $mysqli->prepare('SELECT * FROM years WHERE year = \'' . $year .  '\' LIMIT 1');
 $price_query->execute();
 $price_res = $price_query->get_result();
 $price_res_arr = $price_res->fetch_assoc();
 
-// RIGHT HERE. accessing array this way does not work. array is keyed by WORDS, not numbers :/
-//  after that, double check numbers. seems to be a problem either storing or retrieving the decimal values
-$index = 0;
-// set price and profit for each item.
+// in the $fruit_itmes assoc array, set price and profit for each item.
 foreach ($price_res_arr as $col => $val) {
 	// ignore id, year, and order_table_name
 	//  because they aren't price or profit
 	if (!in_array($item_name,["ID", "year", "order_table_name"])) {
-		// NEED SUBSTRING HERE
 		$last_six = substr($col, -6);
-		// if substring $val,-6,end == _price
+		// if string ends in _price
 		if ($last_six == "_price") {
-			// set price
-			$fruit_items[$index]->price = $val;
+			// get correct associative index by finding _price
+			//  then replacing it with nothing (ie, trimming it off)
+			//  also of interest is strpos(haystack,needle)
+			$loc = strpos($col, $last_six);
+			$index = substr_replace($col,'',$loc);
+			$fruit_items[$index]["price"] = $val;
+		// elseif string ends in profit
 		} elseif ($last_six == "profit") {
-			// set profit
-			$fruit_items[$index]->profit = $val;
-			$index++;
+			// almost same as above, just offset
+			// one offset because _price != profit
+			$loc = strpos($col, $last_six);
+			$index = substr_replace($col,'',$loc - 1);
+			$fruit_items[$index]["profit"] = $val;
 		}
 	}
 }
+/* check for the $fruit_items price and profit vals
 echo "<pre>";
 print_r(array_filter($fruit_items));
 echo "</pre>";
-
+ */
 
 // release price results
 $price_res->close();
-/*
 
 // @TODO break next part into separate function
 //  param target year
@@ -80,41 +83,45 @@ $page_data .="<table>
 	<tr>
 		<th><div><span>Name<br>(click to edit)</span></div></th>";
 
-// add all the fruit item types to table as column headers
-//  $fruit_items is in page_defs.php
-foreach($fruit_items as $item) {
-	$page_data .= "\n<th class=\"rotate-45\"><div><span>" . $item["name"] . "</span></div></th>";
-}
-$page_data .= "<th class=\"rotate-45\"><div><span>Total Items</span></div></th>
+$page_data .= "\n<th><div><span>Check</span></div></th>";
+$page_data .= "\n<th><div><span>Profit</span></div></th>";
+$page_data .= "\n<th><div><span>Num Items</span></div></th>
 	</tr>
 	</thead>
 	<tbody>";
 
-while ($results_arr = $results->fetch_assoc()) { */
-/*	
+while ($results_arr = $results->fetch_assoc()) { 
+	/*
 	// first returned array has NULL results. 
 	// use array_filter() to clean it up
 	echo "<pre>";
 	print_r(array_filter($results_arr));
 	echo "</pre>";
- */
-/*
+	 */
 	$student_total = 0;
 	// for each record (student in this case) returned
 	$page_data .= "\n<tr>";
 	// unified name column
 	$page_data .= "<td><a href=\"index.php?id=" . $results_arr["ID"] . "\">" . $results_arr["fname"] . " " . $results_arr["lname"] . "</a></td>";
-	foreach ($results_arr as $item_name => $item_value) {
-		//  add student's sales data to table. ignore id, fname, and lname because they aren't fruit.
+	// check and profit
+	$check = 0;
+	$profit_total = 0;
+
+	foreach ($results_arr as $item_name => $item_amt) {
+		// total students' check amounts and profits.
+		// ignore id, fname, and lname because they aren't fruit.
 		if (!in_array($item_name,["ID", "fname", "lname"])) {
-			if (isset($item_value)){
-				$page_data .= "<td>" . $item_value . "</td>";
-			} else {
-				$page_data .= "<td>0</td>";
-			}
-			$student_total += $item_value;
+			if (isset($item_amt)){
+				$price = $fruit_items[$item_name]["price"];
+				$check += $price * $item_amt;
+				$profit = $fruit_items[$item_name]["profit"];
+				$profit_total += $profit * $item_amt;
+			} 
+			$student_total += $item_amt;
 		}
 	}
+	$page_data .= "<td>" . $check . "</td>";
+	$page_data .= "<td>" . $profit_total . "</td>";
 	$page_data .= "<td>" . $student_total . "</td>";
 	$page_data .= "</tr>";
 }
@@ -122,7 +129,6 @@ $page_data .= "\n</tbody>
 	</table>";
 // release results
 $results->close();
- */
 // close db conn
 $mysqli->close();
 

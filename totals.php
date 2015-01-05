@@ -74,7 +74,8 @@ foreach($fruit_items as $item) {
 		$first = true;
 	}
 }
-$page_data .= "<td>All Items</td>
+$page_data .= "<tr>
+	<td>All Items</td>
 		<td class=\"all_items\">$all_items</td>
 	</tr>
 	</tbody>

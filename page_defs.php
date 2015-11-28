@@ -8,8 +8,8 @@
  */
 
 //@TODO get price and profit from years table once then update on year change. 
-$fruit_items = array("naval_orang_full" => array("name" => "Naval Oranges Full Box", "price" => 0.00, "profit" => 0.00),
-	 				 "naval_orang_half" => array("name" => "Naval Oranges Half Box", "price" => 0.00, "profit" => 0.00),
+$fruit_items = array("navel_orang_full" => array("name" => "Navel Oranges Full Box", "price" => 0.00, "profit" => 0.00),
+	 				 "navel_orang_half" => array("name" => "Navel Oranges Half Box", "price" => 0.00, "profit" => 0.00),
 					 "red_grape_full" => array("name" => "Red Grapefruit Full Box", "price" => 0.00, "profit" => 0.00),
 					 "red_grape_half" => array("name" => "Red Grapefruit Half Box", "price" => 0.00, "profit" => 0.00),
 					 "grann_smith_full" => array("name" => "Granny Smith Full Box", "price" => 0.00, "profit" => 0.00),
@@ -51,7 +51,7 @@ function page_head($page_title) {
 }
 
 $footer = "<footer>
-	<p>Oostburg Parents Music Club Fruit Sale Counting App<br>
+	<p>Oostburg Parents Music Club Fruit Counter<br>
    by Dan Leitzke 2014 - " . date("Y") . " drleitzke[at]gmail[dot]com<br>
 	</p>
 </footer>
@@ -66,7 +66,7 @@ function get_header_nav($curr_page) {
 
   // start the header
   $header_nav = "<header>
-		<h1>OPMC Fruit Sale Counting App</h1>
+		<h1>OPMC Fruit Counter</h1>
 </header>
 <nav>
   <ul>
@@ -76,14 +76,13 @@ function get_header_nav($curr_page) {
   $index_link = "<li><a href='index.php'>Order Entry</a></li>\n";
   $totals_link = "<li><a href='totals.php'>Totals</a></li>\n";
   $students_report_link = "<li><a href='students_report.php'>Students Report</a></li>\n";
-  $profit_report_link = "<li><a href='profit_report.php'>Profits</a></li>\n";
 
   // figure out which page is active and add a class to it
   $page_var = $curr_page . "_link";
   $$page_var = "<li><a id='active_page' " . substr($$page_var, 7);
 
   // concatenate strings to add nav items
-  $header_nav .= $index_link . $totals_link . $students_report_link . $profit_report_link;
+  $header_nav .= $index_link . $totals_link . $students_report_link;
 
   // close ending tags
   $header_nav .= "</ul>
@@ -91,5 +90,8 @@ function get_header_nav($curr_page) {
 
   return $header_nav;
 }
+
+// possibly the most important value of all: what year are we using?
+$year = 2015;
 
 // no closing tag

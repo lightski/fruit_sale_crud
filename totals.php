@@ -16,22 +16,16 @@ if ($mysqli->connect_errno) {
 }
 
 // okay let's mySQL this
-$query = $mysqli->prepare('SELECT * FROM students_fruit_2014');
+$query = $mysqli->prepare('SELECT * FROM students_fruit_'.$year);
 $query->execute();
 $results = $query->get_result();
 // # records returned = # of students
 $num_students = $results->num_rows;
 $all_items = 0;
 while($results_arr = $results->fetch_assoc()) {
-	// first returned array has NULL results. use array_filter() to clean it up
-	/*
-	echo "<pre>";
-	print_r(array_filter($results_arr));
-	echo "</pre>";
-	 */
-	// for each record returned
+
 	foreach ($results_arr as $item_name => $item_amount) {
-		//  if record is a fruit item, add it to totals
+	//  if record is a fruit item, add it to totals
 		if (!(in_array($item_name, ["ID","fname","lname"]))){
 			$fruit_items[$item_name]["amount"] += $item_amount;
 			$all_items += $item_amount;
@@ -45,14 +39,14 @@ $results->close();
 //var_dump($fruit_items);
 
 // $page_data = "<h2>Order Summary</h2>"; <-- seems unnecessary
-$page_data = "<p>Current year: ". date(Y) . "; "; // temporary until fix for better functionality
+$page_data = "<p>Year: ". $year . "; "; // temporary until fix for better functionality
 $page_data .= " Students entered: " . $num_students . "</p>";
 $page_data .="<table>
 	<thead>
 	<tr>
-		<th>Item Name</th>
+		<th>Name</th>
 		<th>Quantity</th>
-		<th>Item Name</th>
+		<th>Name</th>
 		<th>Quantity</th>
 	</tr>
 	</thead>
@@ -63,19 +57,18 @@ $page_data .="<table>
 $first = true;
 foreach($fruit_items as $item) {
 	if($first){
-		$page_data .= "<tr>";
-		$page_data .= "<td>" . $item["name"] . "</td>";
-		$page_data .= "<td>" . $item["amount"] . "</td>";
+		$page_data .= "<tr>
+		<td>" . $item["name"] . "</td>
+		<td>" . $item["amount"] . "</td>";
 		$first = false;
 	} else {
-		$page_data .= "<td>" . $item["name"] . "</td>";
-		$page_data .= "<td>" . $item["amount"] . "</td>";
-		$page_data .= "</tr>";
+		$page_data .= "<td>" . $item["name"] . "</td>
+		<td>" . $item["amount"] . "</td>
+		</tr>";
 		$first = true;
 	}
 }
-$page_data .= "<tr>
-	<td>All Items</td>
+$page_data .= "<td>All Items</td>
 		<td class=\"all_items\">$all_items</td>
 	</tr>
 	</tbody>

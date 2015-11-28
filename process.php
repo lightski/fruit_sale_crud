@@ -1,4 +1,6 @@
 <?php
+// get this just for the $year variable. possibly overkill...
+require_once "page_defs.php";
 
 // enable PHP ridiculous error reporting
 error_reporting(-1);
@@ -24,7 +26,6 @@ $return_loc = "index.php";
 
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 	//only do stuff if user requested this by submitting form via POST
-
 	//db connection variables
 	require_once 'db_config.php';
 	//connecting to db
@@ -43,10 +44,10 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
 	 */
 
 	if ($_POST["query_type"] == "new") {
-		$query_start = "INSERT INTO `students_fruit_2014` SET ";
+		$query_start = "INSERT INTO `students_fruit_" . $year . "` SET ";
 		$query_end = "";
 	} else if ($_POST["query_type"] == "update") {
-		$query_start = "UPDATE `students_fruit_2014` SET ";
+		$query_start = "UPDATE `students_fruit_" . $year . "` SET ";
 		$query_end = " WHERE `ID`=?";
 		$return_loc = "students_report.php";
 	}
@@ -104,12 +105,12 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
 	}
 
 	// testing purposes
-/*
+
   echo $total_query;
   echo "<br><pre>";
   print_r($val_arr);
   echo "</pre>";
- */
+ 
 
   // big crazy database thing w/prepared statements
   // mostly from comment section here: http://www.php.net/manual/en/mysqli-stmt.bind-param.php

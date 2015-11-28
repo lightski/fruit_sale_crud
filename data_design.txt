@@ -3,17 +3,16 @@ then I though, nah, that's ridiculous. why make two when one will suffice? they 
 anyway, so yeah just decided to go with one.
 
 table 1: students_fruit
-ID        fname   lname  "naval_orang_full"  "naval_orang_half"   "red_grape_full" ETC
+ID        fname   lname  "navel_orang_full"  "navel_orang_half"   "red_grape_full" ETC
 PK, AI
 INT(10)   text    text     INT(3)        *           *
 
 
-CREATE TABLE students_fruit_2014 (
+CREATE TABLE students_fruit_2015 (
   ID INT(10) NOT NULL AUTO_INCREMENT,
   fname VARCHAR(15) NOT NULL,
   lname VARCHAR(25) NOT NULL,
-  naval_orang_full INT(3),
-  naval_orang_half INT(3),
+  navel_orang_full INT(3), navel_orang_half INT(3),
   red_grape_full INT(3),
   red_grape_half INT(3),
   grann_smith_full INT(3),
@@ -33,7 +32,7 @@ CREATE TABLE students_fruit_2014 (
   gift_l INT(3),
   gift_s INT(3),
   gift_lp INT(3),
-  gitf_sp INT(3),
+  gift_sp INT(3),
   pinea INT(3),
   PRIMARY KEY ( ID )
 );
@@ -44,7 +43,7 @@ The new table will also point to where each year's records are stored.
 ALSO note that the *_price here refers to the price the fruit was sold at, not the purchase price.
 We aren't doing anything with purchase price as of now.
 
-ID        year	 students_table 	naval_orang_full_price	naval_orang_full_profit naval_orang_half_price naval_orang_half_profit ETC
+ID        year	 students_table 	navel_orang_full_price	navel_orang_full_profit navel_orang_half_price navel_orang_half_profit ETC
 PK, AI
 INT(4)   INT(4)    VARCHAR(25)		 DECIMAL(4,2)              NOT NULL       *           *		 *			*
 
@@ -53,10 +52,10 @@ CREATE TABLE years (
   ID INT(4) NOT NULL AUTO_INCREMENT,
   year INT(4) NOT NULL,
   students_table VARCHAR(25) NOT NULL,
-  naval_orang_full_price DECIMAL(4,2) NOT NULL,	
-  naval_orang_full_profit DECIMAL(4,2) NOT NULL,	
-  naval_orang_half_price DECIMAL(4,2) NOT NULL,	
-  naval_orang_half_profit DECIMAL(4,2) NOT NULL,	
+  navel_orang_full_price DECIMAL(4,2) NOT NULL,	
+  navel_orang_full_profit DECIMAL(4,2) NOT NULL,	
+  navel_orang_half_price DECIMAL(4,2) NOT NULL,	
+  navel_orang_half_profit DECIMAL(4,2) NOT NULL,	
   red_grape_full_price DECIMAL(4,2) NOT NULL,	
   red_grape_full_profit DECIMAL(4,2) NOT NULL,	
   red_grape_half_price DECIMAL(4,2) NOT NULL,	
@@ -106,8 +105,8 @@ First insert. With this typing, MySQL reserves 4 digits two of which are to the 
 INSERT INTO years SET
   year = 2014,
   students_table = "students_fruit_2014",
-  naval_orang_full_price = 35, naval_orang_full_profit = 10.05,
-  naval_orang_half_price = 23, naval_orang_half_profit = 7.75,
+  navel_orang_full_price = 35, navel_orang_full_profit = 10.05,
+  navel_orang_half_price = 23, navel_orang_half_profit = 7.75,
   red_grape_full_price = 30, red_grape_full_profit = 9.05,	
   red_grape_half_price = 21, red_grape_half_profit = 8.05,
   grann_smith_full_price = 28, grann_smith_full_profit = 9.05,	
@@ -131,4 +130,31 @@ INSERT INTO years SET
   pinea_price = 5.25, pinea_profit = 3.49
 ;
 
-
+Second insert. The 2015 numbuhs.
+INSERT INTO years SET
+  year = 2015,
+  students_table = "students_fruit_2015",
+  navel_orang_full_price = 35, navel_orang_full_profit = 10.05,
+  navel_orang_half_price = 23, navel_orang_half_profit = 7.75,
+  red_grape_full_price = 30, red_grape_full_profit = 10.05,	
+  red_grape_half_price = 21, red_grape_half_profit = 8.5,
+  grann_smith_full_price = 28, grann_smith_full_profit = 9.75,	
+  grann_smith_half_price = 18, grann_smith_half_profit = 7.55,
+  red_delic_full_price = 28, red_delic_full_profit = 9.75,	
+  red_delic_half_price = 18, red_delic_half_profit = 7.55,
+  golde_delic_full_price = 28, golde_delic_full_profit = 9.75,
+  golde_delic_half_price = 18, golde_delic_half_profit = 7.55,
+  braeb_full_price = 28, braeb_full_profit = 9.75,
+  braeb_half_price = 18, braeb_half_profit = 7.55,
+  danjo_pears_full_price = 28, danjo_pears_full_profit = 8.25,
+  danjo_pears_half_price = 18, danjo_pears_half_profit = 6.6,
+  mixed_a_price = 29, mixed_a_profit = 9.50,
+  mixed_b_price = 29, mixed_b_profit = 9.50,
+  mixed_c_price = 29, mixed_c_profit = 10.5,
+  mixed_d_price = 29, mixed_d_profit = 10.5,
+  gift_l_price = 29, gift_l_profit = 10.05,
+  gift_s_price = 22, gift_s_profit = 8.85,
+  gift_lp_price = 29, gift_lp_profit = 10.05,
+  gift_sp_price = 22, gift_sp_profit = 8.85,
+  pinea_price = 5.25, pinea_profit = 2.25
+;

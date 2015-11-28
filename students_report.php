@@ -15,7 +15,6 @@ if ($mysqli->connect_errno) {
   die();
 }
 
-$year = 2014; // TODO- make this user-switchable
 // query for price and profits
 $price_query = $mysqli->prepare('SELECT * FROM years WHERE year = \'' . $year .  '\' LIMIT 1');
 $price_query->execute();
@@ -46,14 +45,14 @@ foreach ($price_res_arr as $col => $val) {
 $price_res->close();
 
 // query database for each student and their sales
-$query = $mysqli->prepare('SELECT * FROM students_fruit_2014 ORDER BY lname,fname ASC');
+$query = $mysqli->prepare('SELECT * FROM students_fruit_' . $year . ' ORDER BY lname,fname ASC');
 $query->execute();
 $results = $query->get_result();
 // # records returned = # of students
 $num_students = $results->num_rows;
 
 // $page_data = "<h2>Each student's order</h2>"; <--unnecessary
-$page_data = "<p>Current year: ". date(Y) . ";"; // temporary until fix for better functionality
+$page_data = "<p>Year: ". $year . ";"; 
 $page_data .= " Students entered: " . $num_students . "</p>";
 $page_data .="<table>
 	<thead>

@@ -28,7 +28,7 @@ if(isset($_GET["id"])){
 	  die();
 	}
 
-	$query = $mysqli->prepare('SELECT * FROM students_fruit_2014 WHERE ID=' . $stu_id . ' LIMIT 1');
+	$query = $mysqli->prepare('SELECT * FROM students_fruit_' . $year . ' WHERE ID=' . $stu_id . ' LIMIT 1');
 	$query->execute();
 	$results = $query->get_result();
 	$results_arr = $results->fetch_assoc();

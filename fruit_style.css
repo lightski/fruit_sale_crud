@@ -82,17 +82,17 @@ thead tr th.rotate-45 {
 }
 thead tr th.rotate-45 > div {
 	position: relative;
+	height: 200px;
 	top: 0px;
-	height: 150%;
 	overflow: hidden;
 }	
 thead tr th.rotate-45 span {
 	transform: rotate(-90deg);
 	position: absolute;
-	bottom: 50px;
-	left: -25px;
-	width: 100px;
 	text-align: left;
+	bottom: 90px;
+	left: -70px;
+	width: 180px;
 }
 table tbody tr:nth-of-type(odd) {
 	background-color:rgb(190,190,190);
@@ -106,6 +106,14 @@ table tbody tr:nth-of-type(odd) {
 /* make total figure more obvious */
 .all_items {
 	font-size: 2em;
+}
+
+/* reminder text on name column */
+span.reminder {
+	font-size: .8em;
+	width: 10px;
+	display: block;
+	margin-left: 15px;
 }
 
 /* misc */

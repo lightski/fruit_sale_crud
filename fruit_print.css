@@ -1,27 +1,19 @@
-/* style for printing
+/* 
+ * style for printing
  * especially useful for getting the report on one page
  */
-body {
-	font-family: Georgia, serif;
-	width: 100%;
-	margin: none;
-	padding: none;
-}
+
+@import url("fruit_style.css");
 
 header, nav, footer{
 	display: none;
 }
 
-/* removed table inline stylings; re-added here */
-table {
-	border-collapse: collapse;
-	border: 1px solid black;
+span.reminder {
+	display: none;
 }
-table td {
-	border: 1px solid black;
-	padding: 1% 0;
-}
-table tr { text-align: center; }
-thead tr th { border: 1px solid black; }
-thead { display: table-header-group; }
 
+td > a {
+	text-decoration: none;
+	color: inherit;
+}

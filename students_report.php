@@ -28,7 +28,7 @@ $page_data .= " Students entered: " . $num_students . "</p>";
 $page_data .="<table>
 	<thead>
 	<tr>
-		<th><div><span>Name<br>(click to edit)</span></div></th>";
+		<th><div>Name<span class='reminder'>(click to edit)</span></div></th>";
 
 // add all the fruit item types to table as column headers
 foreach($fruit_items as $item) {

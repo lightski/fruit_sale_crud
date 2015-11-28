@@ -46,10 +46,20 @@ form div input {
 }
 form input[type="submit"] {
 	width: 10%;
-	height: 10%;
 	clear: both;
 	display: block;
 	margin: 1%;
+}
+
+td.deletion form input[type="submit"] {
+	width: inherit;
+	clear: inherit;
+	display: default;
+	margin: inherit;
+}
+
+td.extra-wide {
+	width: 70px;
 }
 
 /* fix up the huge table on students report page */

@@ -158,3 +158,10 @@ INSERT INTO years SET
   gift_sp_price = 22, gift_sp_profit = 8.85,
   pinea_price = 5.25, pinea_profit = 2.25
 ;
+
+
+// Query for 2015-11-28 to update pineapple!! DONT LOSE THIS DUDE
+update years set pinea_profit=3.00 where year=2015;
+
+
+

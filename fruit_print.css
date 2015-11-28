@@ -5,6 +5,11 @@
 
 @import url("fruit_style.css");
 
+td > a {
+	text-decoration: none;
+	color: inherit;
+}
+
 header, nav, footer{
 	display: none;
 }
@@ -13,7 +18,6 @@ span.reminder {
 	display: none;
 }
 
-td > a {
-	text-decoration: none;
-	color: inherit;
+.deletion {
+	display: none;
 }

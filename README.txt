@@ -19,12 +19,11 @@ author: dan leitzke 06/30/2014
 	-open index.php and start entering orders
 
 [@TODO]
-	-add total dollar amount and total profit amount on totals.php and students_report.php
-	-fit students_report.php on single page for printing
+	-secure input to delete?
+	-offer to undelete on the fruit_report
 
 [FUTURE ADD-ONS]
 	-running total, in $$ and # items, on order entry page
-	-delete functionality, with confirmation, on students_report page
 	-fix report appearance in Chrome column headers
 	-Proper data validation in process.php - only characters in fname/lname and only numbers in fruit
 	-Proper data validation in index.php - $_GET["id"] is pretty insecure currently
@@ -37,3 +36,4 @@ author: dan leitzke 06/30/2014
 
 	+Allow user to edit student's order via clickable links on students_report {Added 11/15/14 DL}
 	+Tweak student report column headers for readability {Removed slant 11/22/14 DL}
+	+delete functionality on students_report page {Added 11/28/15 DL}

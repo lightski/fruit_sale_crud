@@ -66,6 +66,7 @@ foreach($fruit_items as $item) {
 $page_data .= "<th class=\"rotate-45\"><div><span>Total Items</span></div></th>";
 $page_data .= "\n<th class=\"rotate-45\"><div><span>Check Amount</span></div></th>";
 $page_data .= "\n<th class=\"rotate-45\"><div><span>Student Profit</span></div></th>
+	<th class=\"deletion\"><div><span>Click to delete</span></div></th>
 	</tr>
 	</thead>
 	<tbody>";
@@ -76,7 +77,6 @@ while($results_arr = $results->fetch_assoc()) {
 	$page_data .= "\n<tr>";
 	// unified name column
 	$page_data .= "<td><a href=\"index.php?id=" . $results_arr["ID"] . "\">" . $results_arr["fname"] . " " . $results_arr["lname"] . "</a></td>";
-	// check and profit
 	$check = 0;
 	$profit = 0;
 
@@ -94,10 +94,13 @@ while($results_arr = $results->fetch_assoc()) {
 			$student_total += $item_value;
 		}
 	}
-	$page_data .= "<td>" . $student_total . "</td>";
-	$page_data .= "<td>\$" . $check . "</td>";
-	$page_data .= "<td>\$" . $profit . "</td>";
-	$page_data .= "</tr>";
+	$page_data .= "<td>" . $student_total . "</td>
+	<td class=\"extra-wide\">\$" . number_format($check, 2) . "</td>
+	<td class=\"extra-wide\">\$" . number_format($profit, 2) . "</td>
+	<td class=\"deletion\"><form name='delete form' action='delete.php' method='POST'>
+		<input name='id' value=" . $results_arr["ID"] . " type=\"hidden\" />
+		<input name='delete' type='submit' value='Delete' /></td>
+	</tr>";
 }
 $page_data .= "\n</tbody>
 	</table>";

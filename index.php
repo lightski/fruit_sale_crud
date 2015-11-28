@@ -8,9 +8,11 @@
 require_once "page_defs.php";
 require_once "db_config.php";
 
+/*
 // enable PHP ridiculous error reporting
 error_reporting(-1);
 ini_set('display_errors', 'On');
+ */
 
 // if page requested with an id, bring up that order for editing
 //  else bring up a blank form to enter a new record

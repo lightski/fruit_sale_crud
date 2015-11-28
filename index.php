@@ -19,7 +19,7 @@ if(isset($_GET["id"])){
 // SANITY CHECK FOR $_GET["id"] GOES HERE!!!
 	$stu_id =$_GET["id"];
 	$query_type = "update";
-	$order_form = "<h2>Update order</h2>";
+//	$order_form = "<h2>Update order</h2>"; <--seems unnecessary
 	// connecting to db
 	$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE, DB_PORT);
 	// check db connection
@@ -33,7 +33,7 @@ if(isset($_GET["id"])){
 	$results = $query->get_result();
 	$results_arr = $results->fetch_assoc();
 
-	$order_form  .= "<form action=\"process.php\" method=\"post\">
+	$order_form  = "<form action=\"process.php\" method=\"post\">
 		<label>Student</label>
 		<input type=\"text\" name=\"student[fname]\" placeholder=\"first name\" value=\"" . $results_arr["fname"] . "\" autofocus>
 		<input type=\"text\" name=\"student[lname]\" placeholder=\"last name\" value=\"" . $results_arr["lname"] . "\"><br /><br />";
@@ -62,8 +62,8 @@ if(isset($_GET["id"])){
 } else {
 	// not an update, so this is a new entry
 	$query_type = "new";
-	$order_form = "<h2>Enter orders here</h2>";
-	$order_form  .= "<form action=\"process.php\" method=\"post\">
+//	$order_form = "<h2>Enter orders here</h2>"; <--seems unnecessary
+	$order_form  = "<form action=\"process.php\" method=\"post\">
 		<label>Student</label>
 		<input type=\"text\" name=\"student[fname]\" placeholder=\"first name\" autofocus>
 		<input type=\"text\" name=\"student[lname]\" placeholder=\"last name\"><br><br>";

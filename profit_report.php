@@ -13,15 +13,7 @@ if ($mysqli->connect_errno) {
   die();
 }
 
-// before getting year, need to determine which year we are in
-// @TODO add persistent year selector here
-// OR add that to the page_defs.php or another separate thing. 
-//		-set up price/profit amounts once at start of sesssion
-//		-alter them when user changes years
-//		-(rather than recalulating for every page)
-
-// until that's done, just use 2014
-$year = 2014;
+$year = 2014; // TODO- make this user-switchable
 // query for price and profits
 $price_query = $mysqli->prepare('SELECT * FROM years WHERE year = \'' . $year .  '\' LIMIT 1');
 $price_query->execute();
@@ -52,22 +44,8 @@ foreach ($price_res_arr as $col => $val) {
 		}
 	}
 }
-/* check for the $fruit_items price and profit vals
-echo "<pre>";
-print_r(array_filter($fruit_items));
-echo "</pre>";
- */
-
 // release price results
 $price_res->close();
-
-// @TODO break next part into separate function
-//  param target year
-//  returns array of students and their orders that year
-// that way can use same code here and in students_report without
-//  having to change it in both places.
-//  though i'm not so sure if that will work for the while loop below...
-
 // query database for each student and their sales
 $query = $mysqli->prepare('SELECT * FROM students_fruit_2014 ORDER BY lname,fname ASC');
 $query->execute();
@@ -107,17 +85,17 @@ while ($results_arr = $results->fetch_assoc()) {
 	$check = 0;
 	$profit_total = 0;
 
-	foreach ($results_arr as $item_name => $item_amt) {
+	foreach ($results_arr as $item_name => $item_value) {
 		// total students' check amounts and profits.
 		// ignore id, fname, and lname because they aren't fruit.
 		if (!in_array($item_name,["ID", "fname", "lname"])) {
-			if (isset($item_amt)){
+			if (isset($item_value)){
 				$price = $fruit_items[$item_name]["price"];
-				$check += $price * $item_amt;
+				$check += $price * $item_value;
 				$profit = $fruit_items[$item_name]["profit"];
-				$profit_total += $profit * $item_amt;
+				$profit_total += $profit * $item_value;
 			} 
-			$student_total += $item_amt;
+			$student_total += $item_value;
 		}
 	}
 	$page_data .= "<td>" . $check . "</td>";

@@ -44,8 +44,8 @@ $results->close();
 
 //var_dump($fruit_items);
 
-$page_data = "<h2>Order Summary</h2>";
-$page_data .= "<p>Current year: ". date(Y) . "; "; // temporary until fix for better functionality
+// $page_data = "<h2>Order Summary</h2>"; <-- seems unnecessary
+$page_data = "<p>Current year: ". date(Y) . "; "; // temporary until fix for better functionality
 $page_data .= " Students entered: " . $num_students . "</p>";
 $page_data .="<table>
 	<thead>

@@ -97,7 +97,7 @@ CREATE TABLE years (
   gift_sp_price DECIMAL(4,2) NOT NULL,	
   gift_sp_profit DECIMAL(4,2) NOT NULL,	
   pinea_price DECIMAL(4,2) NOT NULL,	
-  pinea_profit DECIMAL(4,2) NOT NULL,	
+  pinea_profit DECIMAL(4,3) NOT NULL,	
   PRIMARY KEY ( ID )
 );
 
@@ -127,7 +127,7 @@ INSERT INTO years SET
   gift_s_price = 20, gift_s_profit = 7.05,
   gift_lp_price = 27, gift_lp_profit = 8.25,
   gift_sp_price = 20, gift_sp_profit = 7.05,
-  pinea_price = 5.25, pinea_profit = 3.49
+  pinea_price = 5.25, pinea_profit = 1.925
 ;
 
 Second insert. The 2015 numbuhs.

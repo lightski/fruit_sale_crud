@@ -7,6 +7,7 @@ written in PHP with love, this app is designed to aid the counting of fruit sale
 
 author: dan leitzke 06/30/2014
 
+
 [INSTALLATION]
 	-have web server with PHP and mySQL
 	-copy directory to webroot on server OR clone via git
@@ -18,22 +19,40 @@ author: dan leitzke 06/30/2014
 	-OPTIONAL alter web server config to require a passsword for viewing this directory
 	-open index.php and start entering orders
 
+
+[CHANGING YEARS]
+As of 2015-11-28, to switch years you must:
+	-get the new prices and cost to school
+	-calculate price - cost = student profit
+	-copy years table query from prior year and update year, price, and profit
+	-create a new students_fruit_YEAR table 
+	-set $year=YEAR in page_defs.php
+
+
 [@TODO]
-	-secure input to delete?
-	-offer to undelete on the fruit_report
+	-on order entry page show running total in $$ and # items
+	-on totals page have spots for total check amount OPMC needs to write (ie, cost of fruit so price - profit)
+	-on students report
+		-make last row totals of every fruit item then total profit and total check.
+		-have column headers stick on scroll down
+	-delete
+		-fix it. seems to work on laptop but not server, so...
+		-offer to undelete on the fruit_report
+
 
 [FUTURE ADD-ONS]
-	-running total, in $$ and # items, on order entry page
-	-fix report appearance in Chrome column headers
+	-proper validation of input to delete??
 	-Proper data validation in process.php - only characters in fname/lname and only numbers in fruit
 	-Proper data validation in index.php - $_GET["id"] is pretty insecure currently
 	-User switchable years, which creates new table in database
 	 (and switches to that for inserts and queries) must show up in totals and student report
-	-Success and failure messages for data entry and updates. make it more reactive to user.
-	-Mobile styling???
 
-	-rewrite as a meteor.js app???
 
+[COMPLETED ADD-ONS]
 	+Allow user to edit student's order via clickable links on students_report {Added 11/15/14 DL}
 	+Tweak student report column headers for readability {Removed slant 11/22/14 DL}
 	+delete functionality on students_report page {Added 11/28/15 DL}
+	+NO meteorjs rewrites!! It's harder than you think and the data is much 
+		easier to query in a MySQL db {11/28/15 DL}
+
+

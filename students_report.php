@@ -24,7 +24,7 @@ $price_res_arr = $price_res->fetch_assoc();
 // in the $fruit_itmes assoc array, set price and profit for each item.
 foreach ($price_res_arr as $col => $val) {
 	// ignore id, year, and order_table_name; they aren't price or profit
-	if (!in_array($item_name,["ID", "year", "order_table_name"])) {
+	if (!in_array($col,["ID", "year", "order_table_name"])) {
 		$last_six = substr($col, -6); // if string ends in _price
 		if ($last_six == "_price") {
 			// get correct associative index by finding _price then trim it off

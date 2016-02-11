@@ -27,6 +27,7 @@ while($results_arr = $results->fetch_assoc()) {
 	foreach ($results_arr as $item_name => $item_amount) {
 	//  if record is a fruit item, add it to totals
 		if (!(in_array($item_name, ["ID","fname","lname"]))){
+			// fruit_items = global array from page_defs.php
 			$fruit_items[$item_name]["amount"] += $item_amount;
 			$all_items += $item_amount;
 		}

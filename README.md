@@ -1,5 +1,4 @@
 # fruit sale CRUD app
-# ABOUT
 This is the official fruit sale order counting app for OSD. 
 Written to aid counting of fruit orders as part of a fundraiser.
 See data_design.txt for table layout and data design (obvs).
@@ -50,5 +49,5 @@ I plan to improve this process, soon...
 	[*]NO meteorjs rewrites!! It's harder than you think and the data is much 
 		easier to query in a MySQL db {11/28/15 DL}
 
-## DiSCLAIMER
+## DISCLAIMER
 	This code works well for me but no guarantees it will for you! Install/run at your own peril.

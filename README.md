@@ -12,7 +12,7 @@ I've used the architecture in a few of my other projects as well.
 	- copy directory to webroot on server OR clone via git
 	- create a database and table in mySQL per the data_design.txt specifications
 		- copy/pasteable instructions for mySQL should be provided in that document
-	-open db_config.php.template with a text editor
+	- open db_config.php.template with a text editor
 		- change second set of values to match your server
 		- save as db_config.php
 	- OPTIONAL alter web server config to require a passsword for viewing this directory
@@ -20,6 +20,7 @@ I've used the architecture in a few of my other projects as well.
 
 ## CHANGING YEARS
 As of 2015-11-28, to switch years you must:
+
 	- get the new prices and cost to school
 	- calculate price - cost = student profit
 	- copy years table query from prior year and update year, price, and profit

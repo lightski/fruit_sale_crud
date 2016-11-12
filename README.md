@@ -28,11 +28,11 @@ As of 2015-11-28, to switch years you must:
 I plan to improve this process, soon...
 
 ## TODO
-	- on order entry page show running total in $$ and # items
+    - use lessons from school project. one was, don't keep data hardcoded on client; instead, get needed info from db.
+	- on order entry page show running total in $$ and # items (javascript?)
 	- on totals page have spots for total check amount OPMC needs to write (ie, cost of fruit so price - profit)
 	- on students report
-		- make last row totals of every fruit item then total profit and total check.
-		- have column headers stick on scroll down
+		- have column headers stick on scroll down (javascript?)
 	- delete
 		- fix it. seems to work on laptop but not server, so...
 		- offer to undelete on the fruit_report

@@ -32,9 +32,9 @@ $fruit_items = array("navel_orang_full" => array("name" => "Navel Oranges Full B
 				     "gift_sp" => array("name" => "Gift Box SP", "price" => 0.00, "profit" => 0.00, "amount" => 0, "amount" => 0, "amount" => 0),
 					 "pinea" => array("name" => "Pineapple", "price" => 0.00, "profit" => 0.00, "amount" => 0));
 /*
-* Page definition variables. Used to build consistent site head, header/navigation, and footer.
-*  repurposed from portfolio site. because reasons....
-*/
+ * Page definition variables. Used to build consistent site head, header/navigation, and footer.
+ *  repurposed from portfolio site. because reasons....
+ */
 
 function page_head($page_title) {
     return "<!doctype html>
@@ -50,7 +50,7 @@ function page_head($page_title) {
 ";
 }
 
-$footer = "<footer>
+$footer = "\n<footer>
 	<p>Oostburg Parents Music Club Fruit Counter<br>
    by Dan Leitzke 2014 - " . date("Y") . " drleitzke[at]gmail[dot]com<br>
 	</p>
@@ -86,7 +86,7 @@ function get_header_nav($curr_page) {
 
   // close ending tags
   $header_nav .= "</ul>
-			  </nav>";
+</nav>";
 
   return $header_nav;
 }

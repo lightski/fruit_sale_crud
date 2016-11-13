@@ -3,9 +3,6 @@ body {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	margin: 2%;
 }
-input[type="number"] {
-  width: 10%;
-}
 a#active_page {
 	color: rgb(255, 0, 0);
 	border: solid 1px rgb(255, 0, 0);

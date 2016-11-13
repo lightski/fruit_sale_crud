@@ -22,20 +22,30 @@ if(isset($_GET["id"])){
 	$results_arr = $results->fetch_assoc();
 
 	$order_form  .= "<input type=\"text\" name=\"student[fname]\" placeholder=\"first name\" value=\"" . $results_arr["fname"] . "\" autofocus>
-		<input type=\"text\" name=\"student[lname]\" placeholder=\"last name\" value=\"" . $results_arr["lname"] . "\"><br /><br />";
-
+		<input type=\"text\" name=\"student[lname]\" placeholder=\"last name\" value=\"" . $results_arr["lname"] . "\">";
+    $order_form .= "<br><br>\n<table>";
+    
+    $first = true;
+    $value = 0;
 	// $fruit_items is from page_defs.php
-	foreach ($fruit_items as $shortname => $attrib_array) {
-		// create an input for each type of fruit, divs for style
-		$order_form .= "\n\t<div>";
-		$order_form .= "<label>".$attrib_array["name"]."</label>";
-		// if set, add correct value for order
-		if(isset($results_arr[$shortname])){
-			$order_form.= "<input type=\"number\" name=\"order[$shortname]\" placeholder=\"0\" min=\"0\" max=\"999\" value=\"" . $results_arr[$shortname]  . "\">";
-		} else {
-			$order_form.= "<input type=\"number\" name=\"order[$shortname]\" placeholder=\"0\" min=\"0\" max=\"999\">";
-		}
-		$order_form .= "</div>";
+    foreach ($fruit_items as $shortname => $attrib_array) {
+        // if set, add correct value for order
+        if(isset($results_arr[$shortname])){ $value = $results_arr[$shortname]; } 
+        else { $value = 0; }
+
+        if ($first){
+            $order_form .= "\n\t<tr>";
+            $order_form .= "<td>".$attrib_array["name"]."</td>";
+            $order_form.= "<td><input type=\"number\" name=\"order[$shortname]\" "; 
+            $order_form .= "placeholder=\"0\" min=\"0\" max=\"999\" value=\"" . $value . '"></td>';
+            $first = false;
+        } else {
+            $order_form .= "<td>".$attrib_array["name"]."</td>";
+            $order_form.= "<td><input type=\"number\" name=\"order[$shortname]\" "; 
+            $order_form .= "placeholder=\"0\" min=\"0\" max=\"999\" value=\"" . $value . '"></td>';
+            $order_form .= "</tr>";
+            $first = true;
+        }
 	}
 
 	// release results and close db conn
@@ -47,22 +57,32 @@ if(isset($_GET["id"])){
 } else { // not an update, so this is a new entry
 	$query_type = "new";
 	$order_form  .= "<input type=\"text\" name=\"student[fname]\" placeholder=\"first name\" autofocus>
-		<input type=\"text\" name=\"student[lname]\" placeholder=\"last name\"><br><br>";
+		<input type=\"text\" name=\"student[lname]\" placeholder=\"last name\">";
+    $order_form .= "<br><br>\n<table>";
 
-	// $fruit_items from page_defs.php
+    $first = true; // build 4-column table layout
+    // $fruit_items from page_defs.php
 	foreach ($fruit_items as $shortname => $attrib_array) {
-		// create an input for each type of fruit, divs for style
-		$order_form .= "\n\t<div>";
-		$order_form .= "<label>".$attrib_array["name"]."</label>";
-		$order_form.= '<input type="number" name="order[' . $shortname . ']" placeholder="0" min="0" max="999">';
-		$order_form .= "</div>";
+    // create an input for each type of fruit, divs for style
+        if ($first) {
+            $order_form .= "\n\t<tr>";
+            $order_form .= "<td>".$attrib_array["name"]."</td>";
+            $order_form.= '<td><input type="number" name="order[' . $shortname . ']" value= "0" placeholder="0" min="0" max="999"></td>';
+            $first = false;
+        } else {
+            $order_form .= "<td>".$attrib_array["name"]."</td>";
+            $order_form.= '<td><input type="number" name="order[' . $shortname . ']" value= "0" placeholder="0" min="0" max="999"></td>';
+            $first = false;
+            $order_form .= "</tr>";
+            $first = true;
+        }
 	}
 }
 
-$order_form .= '<br><br>
-    <div><label>Total Items</label><input type="number" name="total_items" placeholder="0" tabindex="-1" readonly></div>
-    <div><label>Check Total</label><input type="number" name="total_check" placeholder="0" tabindex="-1" readonly></div>
-	<input type="submit" value="Submit" id="submit_buton">
+$order_form .= '<tr><td>Total Items</td><td><input name="total_items" placeholder="0" tabindex="-1" readonly></td>
+    <td>Check Total</td><td><input name="total_check" placeholder="0" tabindex="-1" readonly></td></tr>
+</table>
+	<input type="submit" value="Submit (enter)" id="submit_buton">
 	<input type="hidden" value="' . $query_type . '" name="query_type" readonly>
 </form>';
 

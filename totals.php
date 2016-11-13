@@ -17,12 +17,12 @@ $page_data .= " Students entered: " . $results->num_rows . "</p>";
 $total_check = 0.00;
 $all_items = 0;
 while($results_arr = $results->fetch_assoc()) {
-	foreach ($results_arr as $item_name => $item_amount) {
+	foreach($results_arr as $item_name => $item_amount) {
 	//  if record is a fruit item, add it to totals
 		if (!(in_array($item_name, ["ID","fname","lname"]))){
 			// fruit_items = global array from page_defs.php
             $fruit_items[$item_name]["amount"] += $item_amount;
-            $total_check += $fruit_items[$item_name]["amount"] * $fruit_items[$item_name]["price"];
+            $total_check += ($item_amount * $fruit_items[$item_name]["price"]);
 			$all_items += $item_amount;
 		}
 	}

@@ -23,10 +23,13 @@ function db_conn(){
     return $new_conn;
 }
 
-function build_page($title, $loc, $body){    
+function build_page($title, $loc, $body){ 
     /*
      * create the page layout and pass it back as string
      */
+    // using product array from global scope. right approach; wrong? 
+    // not sure how else to accomplish short of passing as parameter (annoying)
+    global $fruit_items; 
 
     // 1. head bits
     $output = "<!doctype html>\n<html lang=\"en\">";
@@ -34,7 +37,10 @@ function build_page($title, $loc, $body){
 	$output .= "\n\t<title>OPMC Fruit Sale App - $title</title>";
 	$output .= "\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
 	$output .= "\n\t<link rel=\"stylesheet\" href=\"fruit_style.css\"  media=\"only screen\">";
-	$output .= "\n\t<link rel=\"stylesheet\" href=\"fruit_print.css\"  media=\"print\">";
+    $output .= "\n\t<link rel=\"stylesheet\" href=\"fruit_print.css\"  media=\"print\">";
+    $output .= "\n\t<script>var product_arr =" . json_encode($fruit_items) . "\n\t</script>";
+    $output .= "\n\t<script src=\"jquery-3.1.1.min.js\"></script>";
+    $output .= "\n\t<script src=\"fruit_script.js\"></script>";
     $output .= "\n</head>\n<body>";
 
     // 2. navigation 
@@ -58,7 +64,7 @@ function build_page($title, $loc, $body){
     $output .= "\n<footer>";
     $output .= "\n\t<p>Oostburg Parents Music Club Fruit Counter<br>";
     $output .= "\n\tDan Leitzke 2014 - " . date("Y");
-    $output .= "drleitzke[at]gmail[dot]com<br>";
+    $output .= " drleitzke[at]gmail[dot]com<br>";
 	$output .= "</p>\n</footer>\n</body>\n</html>";
     return $output;
 }

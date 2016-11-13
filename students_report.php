@@ -61,7 +61,7 @@ while($results_arr = $results->fetch_assoc()) { // for each student returned
 	<td class=\"extra-wide\">\$" . money_format('%i', $check) . "</td>
 	<td class=\"extra-wide\">\$" . money_format('%i', $profit) . "</td>
 	<td class=\"deletion\"><form name='delete form' action='delete.php' method='POST'>
-		<input name='id' value=" . $results_arr["ID"] . " type=\"hidden\" />
+		<input name='id' value=" . $results_arr["ID"] . " type=\"hidden\" readonly/>
 		<input name='delete' type='submit' value='Delete' /></td>
 	</tr>";
 }

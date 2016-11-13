@@ -1,10 +1,12 @@
 # fruit sale CRUD app
 This is the official fruit sale order counting app for OSD. 
 Written to aid counting of fruit orders as part of a fundraiser.
-See data_design.txt for table layout and data design (obvs).
+See data_design.txt for table layout and data design.
 I doubt this exact setup will help anyone, but it is an okay 
-starting point if you're writing another PHP crud app. 
-I've used the architecture in a few of my other projects as well.
+starting point if you're writing a PHP crud app. 
+I've used the architecture in a few other projects as well;
+it's nice to cross-pollinate and add back improvements as they
+come to me.
 
 ## INSTALLATION
 	- have web server with PHP and mySQL
@@ -22,20 +24,16 @@ As of 2015-11-28, to switch years you must:
 
 	- get the new prices and cost to school
 	- calculate price - cost = student profit
-	- copy years table query from prior year and update year, price, and profit
-	- create a new students_fruit_YEAR table 
+	- create new students_YEAR and products_YEAR tables
+    - add the product info to products_YEAR
 	- set $year=YEAR in page_defs.php
-I plan to improve this process, soon...
 
 ## TODO
-    - use lessons from school project. one was, don't keep data hardcoded on client; instead, get needed info from db.
-	- on order entry page show running total in $$ and # items (javascript?)
-	- on totals page have spots for total check amount OPMC needs to write (ie, cost of fruit so price - profit)
-	- on students report
-		- have column headers stick on scroll down (javascript?)
+	- on order entry page show running total in $$ and # items (js)
+	- on students report have column headers stick on scroll down (js)
 	- delete
 		- fix it. seems to work on laptop but not server, so...
-		- offer to undelete on the fruit_report
+		- offer to undelete on the fruit_report?
 
 ## FUTURE ADD-ONS
 	[]proper validation of input to delete??

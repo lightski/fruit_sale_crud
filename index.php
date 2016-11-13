@@ -6,13 +6,6 @@
  * Uses process.php to to modify the database.
  */
 require_once "page_defs.php";
-require_once "db_config.php";
-
-/*
-// enable PHP ridiculous error reporting
-error_reporting(-1);
-ini_set('display_errors', 'On');
- */
 
 // if page requested with an id, bring up that order for editing
 //  else bring up a blank form to enter a new record
@@ -20,17 +13,9 @@ ini_set('display_errors', 'On');
 if(isset($_GET["id"])){
 // SANITY CHECK FOR $_GET["id"] GOES HERE!!!
 	$stu_id =$_GET["id"];
-	$query_type = "update";
-//	$order_form = "<h2>Update order</h2>"; <--seems unnecessary
-	// connecting to db
-	$mysqli = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE, DB_PORT);
-	// check db connection
-	if ($mysqli->connect_errno) {
-	  echo "Connection Failed: " . $mysqli->connect_error;
-	  die();
-	}
-
-	$query = $mysqli->prepare('SELECT * FROM students_fruit_' . $year . ' WHERE ID=' . $stu_id . ' LIMIT 1');
+    $query_type = "update";
+    $mysqli = db_conn();
+	$query = $mysqli->prepare('SELECT * FROM ' . $students_table . ' WHERE ID=' . $stu_id . ' LIMIT 1');
 	$query->execute();
 	$results = $query->get_result();
 	$results_arr = $results->fetch_assoc();
@@ -54,17 +39,14 @@ if(isset($_GET["id"])){
 		$order_form .= "</div>";
 	}
 
-	// release results
+	// release results and close db conn
 	$results->close();
-	// close db conn
 	$mysqli->close();
 	// pass id through index to process.php
 	$order_form .= "<input type=\"hidden\" value=\"" . $stu_id . "\" name=\"student[id]\">";
 
-} else {
-	// not an update, so this is a new entry
+} else { // not an update, so this is a new entry
 	$query_type = "new";
-//	$order_form = "<h2>Enter orders here</h2>"; <--seems unnecessary
 	$order_form  = "<form action=\"process.php\" method=\"post\">
 		<label>Student</label>
 		<input type=\"text\" name=\"student[fname]\" placeholder=\"first name\" autofocus>
@@ -85,10 +67,6 @@ $order_form .= "<br>
 	<input type=\"hidden\" value=\"$query_type\" name=\"query_type\">
 </form>";
 
-// output the page
-echo page_head("OPMC Fruit Sale App - Order Entry");
-echo get_header_nav("index"); 
-echo $order_form;
-echo $footer;
+echo build_page("Order Entry", "index", $order_form);
 
 // no closing tag

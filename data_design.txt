@@ -164,4 +164,67 @@ INSERT INTO years SET
 update years set pinea_profit=3.00 where year=2015;
 
 
+// 2016 data. students table mostly same; products table replaces years
+
+CREATE TABLE students_2016 (
+    ID INT(10) NOT NULL AUTO_INCREMENT,
+    fname VARCHAR(15) NOT NULL, lname VARCHAR(25) NOT NULL,
+    navel_orang_full INT(3), navel_orang_half INT(3),
+    red_grape_full INT(3), red_grape_half INT(3),
+    grann_smith_one INT(3), grann_smith_two INT(3),
+    red_delic_one INT(3), red_delic_two INT(3),
+    golde_delic_one INT(3), golde_delic_two INT(3),
+    braeb_one INT(3), braeb_two INT(3),
+    danjo_pears_one INT(3), danjo_pears_two INT(3),
+    mixed_a INT(3), mixed_b INT(3), mixed_c INT(3), mixed_d INT(3),
+    mixed_e INT(3), mixed_f INT(3), mixed_g INT(3), mixed_1 INT(3),
+    mixed_2 INT(3), mixed_3 INT(3), mixed_4 INT(3), mixed_5 INT(3),
+    mixed_6 INT(3), gift_l INT(3), gift_s INT(3), gift_lp INT(3), 
+    gift_sp INT(3), pinea INT(3),
+    PRIMARY KEY ( ID )
+);
+
+CREATE TABLE products_2016 (
+    ID TINYINT NOT NULL AUTO_INCREMENT,
+    product_id VARCHAR(20) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    price DECIMAL(5,3) NOT NULL,
+    profit DECIMAL(5,3) NOT NULL,
+    PRIMARY KEY ( ID )
+);
+
+INSERT INTO products_2016 (product_id, name, price, profit) VALUES
+    ('navel_orang_full', 'Full Box Navel Oranges (bulk)', 33, 10),
+    ('navel_orang_half', 'Half Box Navel Oranges (bulk)', 22, 7.75),
+    ('red_grape_full', 'Full Box Red Grapefruit (bulk)', 27, 10.05),
+    ('red_grape_half', 'Half Box Red Grapefruit (bulk)', 19, 8.5),
+    ('grann_smith_one', '1-Layer Granny Smith Apples', 16, 9.75),
+    ('grann_smith_two', '2-Layer Granny Smith Apples', 26, 7.55),
+    ('red_delic_one', '1-Layer Red Delicious Apples', 16, 9.75),
+    ('red_delic_two', '2-Layer Red Delicious Apples', 26, 7.55),
+    ('golde_delic_one', '1-Layer Golden Delicious Apples', 16, 9.75),
+    ('golde_delic_two', '2-Layer Golden Delicious Apples', 26, 7.55),
+    ('braeb_one', '1-Layer Braeburn Apples', 16, 9.75),
+    ('braeb_two', '2-Layer Braeburn Apples', 26, 7.55),
+    ('danjo_pears_one', "1-Layer D'Anjou Pears", 18, 6.6),
+    ('danjo_pears_two', "2-Layer D'Anjou Pears", 28, 8.25),
+    ('mixed_a', 'A. Apples/Pears/Grapefruit', 27, 10.5),
+    ('mixed_b', 'B. Apples/Oranges', 27, 10.5),
+    ('mixed_c', 'C. Grapefruit/Oranges', 27, 10.5),
+    ('mixed_d', 'D. Grapefruit/Apples/Oranges', 27, 10.5),
+    ('mixed_e', 'E. Red Delicious/Golden Delicious', 27, 10.5),
+    ('mixed_f', 'F. 4 Way Mixed Apples', 27, 10.5),
+    ('mixed_g', 'G. Red Delicious/Granny Smith', 27, 10.5),
+    ('mixed_1', '1. 5 Fruit Mix (18 lb)', 27, 10.5),
+    ('mixed_2', '2. 5 Fruit Mix (9 lb)', 17, 10.5),
+    ('mixed_3', '3. Citrus Mix (18 lb)', 25, 10.5),
+    ('mixed_4', '4. Citrus Mix (9 lb)', 15, 10.5),
+    ('mixed_5', '5. 4 Fruit Mix (18 lb)', 27, 10.5),
+    ('mixed_6', '6. 4 Fruit Mix (9 lb)', 17, 10.5),
+    ('gift_l', 'L. Large Gift (15 lb)', 27, 10.05),
+    ('gift_s', 'S. Small Gift (10 lb)', 17, 8.85),
+    ('gift_lp', 'LP. Large Gift with Pears (15 lb)', 27, 10.05),
+    ('gift_sp', 'SP. Small Gift with Pears (10 lb)', 17, 8.85),
+    ('pinea', 'Pineapple (each)', 5, 2.25)
+;
 

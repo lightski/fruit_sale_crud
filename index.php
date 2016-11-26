@@ -79,8 +79,8 @@ if(isset($_GET["id"])){
 	}
 }
 
-$order_form .= '<tr><td>Total Items</td><td><input name="total_items" placeholder="0" tabindex="-1" readonly></td>
-    <td>Check Total</td><td><input name="total_check" placeholder="0" tabindex="-1" readonly></td></tr>
+$order_form .= '<tr><td>Total Items</td><td><input name="total_items" class="totals" placeholder="0" tabindex="-1" readonly></td>
+    <td>Check Total</td><td><input name="total_check" class="totals" placeholder="0" tabindex="-1" readonly></td></tr>
 </table>
 	<input type="submit" value="Submit (enter)" id="submit_buton">
 	<input type="hidden" value="' . $query_type . '" name="query_type" readonly>

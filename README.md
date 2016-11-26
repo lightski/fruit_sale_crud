@@ -20,7 +20,7 @@ come to me.
 	- open index.php and start entering orders
 
 ## CHANGING YEARS
-As of 2015-11-28, to switch years you must:
+As of 2016-11-25, to switch years you must:
 
 	- get the new prices and cost to school
 	- calculate price - cost = student profit
@@ -36,16 +36,11 @@ As of 2015-11-28, to switch years you must:
 		- offer to undelete on the fruit_report?
 
 ## FUTURE ADD-ONS
-	[]proper validation of input to delete??
-	[]Proper data validation in process.php - only characters in fname/lname and only numbers in fruit
-	[]Proper data validation in index.php - $_GET["id"] is pretty insecure currently
-	[]User switchable years, which creates new table in database
+	- proper validation of input to delete??
+	- Proper data validation in process.php - only characters in fname/lname and only numbers in fruit
+	- Proper data validation in index.php - $_GET["id"] is pretty insecure currently
+	- User switchable years, which creates new table in database
 	 (and switches to that for inserts and queries) must show up in totals and student report
-	[*]Allow user to edit student's order via clickable links on students_report {Added 11/15/14 DL}
-	[*]Tweak student report column headers for readability {Removed slant 11/22/14 DL}
-	[*]delete functionality on students_report page {Added 11/28/15 DL}
-	[*]NO meteorjs rewrites!! It's harder than you think and the data is much 
-		easier to query in a MySQL db {11/28/15 DL}
 
 ## DISCLAIMER
 	This code works well for me but no guarantees it will for you! Install/run at your own peril.

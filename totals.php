@@ -40,9 +40,9 @@ $page_data .="<table>
     </colgroup>
 	<thead>
 	<tr>
-		<th>Name</th>
+		<th>Item</th>
 		<th>Quantity</th>
-		<th>Name</th>
+		<th>Item</th>
 		<th>Quantity</th>
 	</tr>
 	</thead>

@@ -7,7 +7,7 @@ require_once "page_defs.php";
 
 $mysqli = db_conn(); //from page_defs
 $id = $_POST["id"]; //TODO- secure this. currently pulls in unfiltered id. 
-// query database for each student and their sales
+// query database to delete one student
 $query = $mysqli->prepare('DELETE FROM '. $students_table . ' WHERE ID=' . $id . ' LIMIT 1');
 $query->execute();
 $mysqli->close();

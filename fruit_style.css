@@ -122,6 +122,11 @@ span.reminder {
 	margin-left: 15px;
 }
 
+/* make auto-generated totals look less editable */
+input.totals {
+    background-color: inherit;
+}
+
 /* misc */
 footer {
 	margin-top: 5%;

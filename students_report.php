@@ -35,9 +35,10 @@ $page_data .= "\n<th class=\"rotate-45\"><div><span>Student Profit</span></div><
 
 while($results_arr = $results->fetch_assoc()) { // for each student returned
 	$student_total = 0;	
-	$page_data .= "\n<tr>";
-	// unified name column
+    $page_data .= "\n<tr>";
+    // click name to edit that student's entry
     $page_data .= "<td><a href=\"index.php?id=" . $results_arr["ID"] . "\">";
+	// unified name column
     $page_data .= $results_arr["fname"] . " " . $results_arr["lname"] . "</a></td>";
 	$check = 0;
 	$profit = 0;
@@ -57,14 +58,18 @@ while($results_arr = $results->fetch_assoc()) { // for each student returned
     }
     $total_check += $check;
     $total_profit += $profit;
-	$page_data .= "<td>" . $student_total . "</td>
-	<td class=\"extra-wide\">\$" . money_format('%i', $check) . "</td>
-	<td class=\"extra-wide\">\$" . money_format('%i', $profit) . "</td>
-	<td class=\"deletion\"><form name='delete form' action='delete.php' method='POST'>
-		<input name='id' value=" . $results_arr["ID"] . " type=\"hidden\" readonly/>
-		<input name='delete' type='submit' value='Delete' /></td>
-	</tr>";
+	$page_data .= "<td>" . $student_total . "</td>";
+	$page_data .= "<td class=\"extra-wide\">\$" . money_format('%i', $check) . "</td>\n";
+    $page_data .= "<td class=\"extra-wide\">\$" . money_format('%i', $profit) . "</td>\n";
+    $page_data .= "<td class=\"deletion\"><form id=\"delete" . $results_arr["ID"] . "form\"";
+    $page_data .= " name='delete" . $results_arr["ID"] . "form' action='delete.php' method='POST'>\n";
+    $page_data .= "<input name='id' value='" . $results_arr["ID"] . "' type='hidden'";
+    $page_data .= " form='delete" . $results_arr["ID"] . "form' readonly />\n";
+    $page_data .= "<input name='delete' type='submit' value='Delete'";
+    $page_data .= " form=\"delete" . $results_arr["ID"] . "form\" formaction=\"delete.php\"";
+    $page_data .= " formmethod=\"post\" />\n</td></form></tr>\n";
 }
+
 // release results and close db conn
 $results->close();
 $mysqli->close();
